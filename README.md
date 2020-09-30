@@ -24,6 +24,6 @@ Para asegurarnos de que los alumnos disponen del nivel suficiente de JS que les 
 
 # Indice
 
-| Documentación |  Teoría  |
-| ------------- | -------- |
-| Clase 1 | [Clase 1](teoria/clase1.md) |
+| Documentación |  Teoría  | Descripción |
+| ------------- | -------- | ----------- |
+| Clase 1 | [Clase 1](teoria/clase1.md) | Presentación, historia y control de versiones |
