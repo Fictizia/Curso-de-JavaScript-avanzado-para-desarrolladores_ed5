@@ -13,7 +13,7 @@
 
 ![Fran Quesada](../assets/clase1/fran-quesada.jpg)
 
-### Bio
+### Bio
 
 Coleccionista de líneas de código, funkos, cómics ~~y estrenos de cine~~. Siempre en las nubes ☁️. Back-end developer en zityhub. Profe en [@fictiziaescuela](https://twitter.com/fictiziaescuela).
 
@@ -22,7 +22,7 @@ Coleccionista de líneas de código, funkos, cómics ~~y estrenos de cine~~. Sie
 - 🕊 [@totegsito](https://twitter.com/totegsito)
 - 👨🏼‍💻 [Fran Quesada Muñoz](https://www.linkedin.com/in/francisco-quesada-mu%C3%B1oz/)
 
-### Sobre el curso
+#### Sobre el curso
 
 - Puntualidad
 - Empezamos desde la base.
