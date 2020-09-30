@@ -12,3 +12,18 @@ La metodología del curso es eminentemente práctica sustentándose sobre una s�
 El curso de JavaScript avanzado para desarrolladores está diseñado para aquellos desarrolladores que ya tienen conocimientos de programación con JavaScript y quieren alcanzar la excelencia en su código JavaScript. Si no dispones de esos conocimientos o quieres asegurar que tu base en JS es la adecuada, te recomendamos que antes realices el «Curso de JavaScript» donde aprenderás a programar utilizando JavaScript y obteniendo con él más que una base sólida para escribir código JS eficiente.
 
 Para asegurarnos de que los alumnos disponen del nivel suficiente de JS que les permita que el curso les resulte útil, los interesados deberán pasar previamente un breve cuestionario técnico sobre JavaScript.
+
+# Sobre el curso
+
+* Horario: Lunes, Miércoles y viernes de 19:00 a 22:00
+* Fechas: 30/09/2020 a 20/11/2020
+* Festivos:
+  * 12/10/2020: Día del Pilar
+  * 1/11/2020: Día de todos los Santos
+  * 9/11/2020: Día de La Almudena
+
+# Indice
+
+| Documentación |  Teoría  |
+| ------------- | -------- |
+| Clase 1 | [Clase 1](teoria/clase1.md) |
