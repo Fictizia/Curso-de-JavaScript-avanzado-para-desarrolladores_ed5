@@ -1,11 +1,35 @@
+## Nombre
+```
 Carlos Ruiz Corrales
+```
 
-Voy a usar Visual Studio Code el SO Apple
+## Herramientas
+```
+Visual Studio Code, MacOS
+```
 
-Me gusta ir al cine leer mangas salir a correr.
+## Hobbies
+```
+Me gusta ir al cine, leer mangas, salir a correr etc.
+```
 
-Conozco html,css,js,ReactJS,Node,Typescript,Java
+## Skills
+```
+Html,css,js,ReactJS,Node,Typescript,Java
+```
 
-Blade Runner, Altered Carbon, FullMetal Alchemist, VinlandSaga y la de los heroes de amazon no me sale el título XD.
+## Series/libros/pelis
+```
+- Series: Altered Carbon, Fullmetal Alchemist, The boys.
+- Libros: Los pilares de la tierra, el guardian entre el centeno.
+- Pelis: Blade Runner, Matrix, Killbill, Reservoir dogs.
+- Mangas: One piece, VinlandSaga, Berserk, Death note.
+```
 
-Conocí el curso por Google en lo que estoy más interesado es en la parte de patrones de diseño y test.
+## Como conocí el curso
+```
+Conocí el curso buscando por Google. Los puntos del curso que más me interesan son:
+
+- Patrones de diseño
+- Tests
+```
