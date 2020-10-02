@@ -35,3 +35,22 @@ const getResutl = (divisor, limit) => {
         }
     }
 }
+
+//Ejercicio 5
+
+const getDays = (velocidadCrecimiento,velocidadDecrecimiento,alturaDeseada ) => {
+
+}
+
+const doIhate = (day,number) => {
+    const hates = {
+        'Monday': 12,
+        'Wednesday': 34,
+        'Thursday': 0,
+        'Saturday': 56,
+    }
+    if(day==='Tuesday') return number>95;
+    if(day==='Friday') return number % 2 === 0;
+    if(day==='Sunday') return Math.abs(number) === 666
+    return hates[day] === number;
+}
