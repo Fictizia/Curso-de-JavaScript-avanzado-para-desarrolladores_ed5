@@ -26,7 +26,7 @@ const operations = {
 const getResult = (num1, num2, operation) => eval(`${num1}${operations[operation]}${num2}`);
 
 //Ejercicio 4
-
+// Maximo múltiplo de divisor menor que el límite
 const getResutl = (divisor, limit) => {
     for(let i = limit; i>0; i--){
         if(i%divisor === 0) {
@@ -36,7 +36,7 @@ const getResutl = (divisor, limit) => {
     }
 }
 
-const getResult2 = (divisor,limit) => {
+const getMaxMultipleOfDivisorLowerThanLimit = (divisor,limit) => {
     const resto = limit % divisor;
     return limit-resto;
 }
