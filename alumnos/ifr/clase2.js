@@ -44,10 +44,42 @@ const getMaxMultipleOfDivisorLowerThanLimit = (divisor,limit) => {
 
 //Ejercicio 5
 
-const getDays = (velocidadCrecimiento,velocidadDecrecimiento,alturaDeseada ) => {
-    return Math.ceil(alturaDeseada/(velocidadCrecimiento-velocidadDecrecimiento))
+/**
+ * 
+ * @param {*} velocidadCrecimiento entero positivo unidades = (uds crece al día) Ej metros que crece al día
+ * @param {*} velocidadDecrecimiento entero positivo unidades = (uds decrece al día)
+ * @param {*} alturaDeseada entero positivo unidades = uds (m,km..)
+ */
+
+const getDays =  (velocidadCrecimiento,velocidadDecrecimiento,alturaDeseada ) => {
+    if(velocidadDecrecimiento >= velocidadCrecimiento) return 'Jamás alcanzará la altura deseada';
+    if(alturaDeseada < 0) return 'Altura imposible';
+    if(alturaDeseada === 0) return 0;
+
+    let alturaAlcanzada = 0; // 0 uds (m,km)
+    let diasPasados = 0;
+    let estaCreciendo = true;  //Nace por el día
+    let crecimiento;
+    while(alturaAlcanzada < alturaDeseada){
+        if(estaCreciendo){
+            crecimiento = velocidadCrecimiento;
+            diasPasados = diasPasados+1;
+        }
+        else {
+            crecimiento = -velocidadDecrecimiento;
+        }
+        estaCreciendo = !estaCreciendo;
+        alturaAlcanzada = alturaAlcanzada + crecimiento;
+    }
+    return diasPasados;
+    
 }
 
+//getDays(3,1,11) // 5
+//getDays(3,1,10) // 5
+//getDays(3,1,12) // 6
+
+//Ejercicio 6
 const doIhate = (day,number) => {
     const hates = {
         'Monday': 12,
