@@ -39,7 +39,7 @@ const getResutl = (divisor, limit) => {
 //Ejercicio 5
 
 const getDays = (velocidadCrecimiento,velocidadDecrecimiento,alturaDeseada ) => {
-
+    return Math.ceil(alturaDeseada/(velocidadCrecimiento-velocidadDecrecimiento))
 }
 
 const doIhate = (day,number) => {
