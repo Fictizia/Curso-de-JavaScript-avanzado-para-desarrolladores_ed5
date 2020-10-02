@@ -36,6 +36,12 @@ const getResutl = (divisor, limit) => {
     }
 }
 
+const getResult2 = (divisor,limit) => {
+    const resto = limit % divisor;
+    return limit-resto;
+}
+
+
 //Ejercicio 5
 
 const getDays = (velocidadCrecimiento,velocidadDecrecimiento,alturaDeseada ) => {
