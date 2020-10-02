@@ -31,8 +31,8 @@ const getResutl = (divisor, limit) => {
     for(let i = limit; i>0; i--){
         if(i%divisor === 0) {
             return i;
-            break; 
         }
+        break; 
     }
 }
 
