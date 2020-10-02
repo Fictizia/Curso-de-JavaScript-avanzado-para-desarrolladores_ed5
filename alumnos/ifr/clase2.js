@@ -29,10 +29,10 @@ const getResult = (num1, num2, operation) => eval(`${num1}${operations[operation
 // Maximo múltiplo de divisor menor que el límite
 const getResutl = (divisor, limit) => {
     for(let i = limit; i>0; i--){
+        console.log({i})
         if(i%divisor === 0) {
             return i;
         }
-        break; 
     }
 }
 
