@@ -87,6 +87,16 @@ console.timeEnd("Reloj del juicio final");
 
 ```
 
+```javascript
+const heroes = [{ nombre: 'Bruce', apellidos: 'Wayne', identidad: 'Batman'}, { nombre: 'Diana', apellidos: 'prince', identidad: 'WonderWoman' }, { nombre: 'Clark', apellidos: 'Kent', identidad: 'Superman' }]
+
+// Nos permite ver de forma muy visual el contenido de un array de objetos
+console.table(heroes)
+
+// Además permite filtrar que columnas vemos
+console.table(heroes, ['identidad'])
+```
+
 La consola está orientada a funcionar por niveles de logs. Esto, bien usado, es muy útil cuando queremos monitorizar el estado de nuestro código.
 
 ```javascript
