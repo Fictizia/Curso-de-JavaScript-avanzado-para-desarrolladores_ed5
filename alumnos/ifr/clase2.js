@@ -16,14 +16,48 @@ result2 = isEven(3); // false
 
 //Ejercicio3
 
-const operations = {
-    suma: '+',
-    resta: '-',
-    multiplicacion: '*',
-    division: '/'
+// Esta solución usa eval que al parecer es el demonio, NO VÁLIDA
+// const operations = {
+//     suma: '+',
+//     resta: '-',
+//     multiplicacion: '*',
+//     division: '/'
+// }
+
+// const getResult = (num1, num2, operation) => eval(`${num1}${operations[operation]}${num2}`);
+
+
+const suma = (num1, num2) => num1 + num2;
+const resta = (num1, num2) => num1 - num2;
+const multiplicacion = (num1, num2) => num1 * num2;
+const division = (num1, num2) => num1 / num2;
+const error = () => 'Operación no contemplada, se admiten: suma, resta, multiplicación, división';
+
+const getOperation = operator => {
+    switch(operator){
+        case 'suma':
+            return suma;
+        case 'resta':
+            return resta;
+        case 'multiplicación':
+            return multiplicacion;
+        case 'división':
+            return division;
+        default: 
+            return error;
+    }
 }
 
-const getResult = (num1, num2, operation) => eval(`${num1}${operations[operation]}${num2}`);
+/**
+ * 
+ * @param a number
+ * @param b number 
+ * @param operation string que puede tomar valores: suma, resta, multiplicación o división
+ */
+
+const getResult = (a, b, operation) => getOperation(operation)(a, b);
+
+
 
 //Ejercicio 4
 // Maximo múltiplo de divisor menor que el límite
