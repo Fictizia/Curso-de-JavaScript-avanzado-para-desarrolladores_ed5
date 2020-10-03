@@ -81,14 +81,26 @@ const getDays =  (velocidadCrecimiento,velocidadDecrecimiento,alturaDeseada ) =>
 
 //Ejercicio 6
 const doIhate = (day,number) => {
-    const hates = {
-        'Monday': 12,
-        'Wednesday': 34,
-        'Thursday': 0,
-        'Saturday': 56,
+    const hatedDaysPerDay = {
+        'Lunes': 12,
+        'Miércoles': 34,
+        'Jueves': 0,
+        'Sábado': 56,
+    };
+
+    switch(day){
+        case 'Martes':
+            return number > 95;
+        case 'Viernes':
+            return number % 2 === 0;
+        case 'Domingo':
+            return Math.abs(number) === 666;
+        case 'Lunes':
+        case 'Miércoles':
+        case 'Jueves':
+        case 'Sábado':
+            return hatedDaysPerDay[day] === number;
+        default:
+            'No es un día válido'
     }
-    if(day==='Tuesday') return number>95;
-    if(day==='Friday') return number % 2 === 0;
-    if(day==='Sunday') return Math.abs(number) === 666
-    return hates[day] === number;
 }
