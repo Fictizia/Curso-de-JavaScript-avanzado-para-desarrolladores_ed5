@@ -50,7 +50,7 @@ Dentro del inspector, encontraremos las siguientes secciones:
 
 #### La consola
 
-La consola es, quizás, la herramienta más (mal) utilizada para debugear código y entender qué está pasando en él. Vamos a aprender cuales son todas las alternativas que existen a la hora de usarlas.
+La consola es, quizás, la herramienta más (mal) utilizada para debugear código y entender qué está pasando en él. Vamos a aprender cuales son todas las alternativas que existen a la hora de usarlas. Hay que tener en cuenta que en entorno productivos hay que limitar al máximo posible el uso de logs.
 
 ```javascript
 // Comprueba que si aserción es verdadera
@@ -78,7 +78,7 @@ console.groupEnd();
 ```
 
 ```javascript
-// Establece un contador y le da un identificador
+// Establece un contador y le da un identificador. Muy útil para obtener métricas de rendimiento.
 console.time("Reloj del juicio final");
 setTimeout(() => {
 // Para el contador y muestra el tiempo
@@ -435,7 +435,7 @@ let edad = prompt("¿Cuantos años tienes?", 0)
 // Aquí ocurre algo que modifica la variable edad
 const mensaje = edad >= 18 ? "Perfecto, puedes pasar" : "No vayas tan rápido, fiera";
 
-// Se pueden ejecutar múltiples expresiones
+// Se pueden ejecutar múltiples expresiones. No es nada recomendable, pero poder, se puede :-)
 let mensaje, edad = prompt("¿Cuantos años tienes?", 0)
 edad >= 18 ? (
   mensaje = "Perfecto, puedes pasar",
