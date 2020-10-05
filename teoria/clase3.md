@@ -387,7 +387,6 @@ console.log(canias)
 'No sabes nada, Jon Nieve'.lastIndexOf('e') // 23
 ```
 
-
 * `.includes(string)`: Devuelve si un string existe dentro de otro.
 
 ```javascript
@@ -405,8 +404,6 @@ const ocurrencias = 'No sabes nada Jon Nieve'.match(/s/ig)
 ```javascript
 const miCadena = 'I love you tres mil'
 const miCadenaConNúmero = miCadena.replace('tres mil', '3000') // I love you 3000
-
-
 ```
 
 * `.split(separador)`: Devuelve un array con el string original separado por el string proporcionado como parámetro.
@@ -598,7 +595,6 @@ Hay que tener en cuenta que los objetos mutan en Javascript. Al guardarse por re
 
 
 ```javascript
-
 const string = 'mi string'
 // Como ya vimos esto no lo puedo hacer
 string = 'otra cosa diferente'
@@ -629,10 +625,10 @@ const personaConNombreYApellidos = {
 }
 ```
 
-
 #### Acceso
 
 Para acceder a una propiedad de un objeto podemos usar:
+
 - El operador `.`
 
 ```javascript
@@ -677,10 +673,12 @@ const { dc: heroesDc = [] } = heroes
 ```
 
 Combinándolo con las claves computadas:
+
 ```javascript
 const DC = 'dc'
+const heroesDc = dc: ['batman', 'superman'],
+
 const heroes = {
-  dc: ['batman', 'superman'],
   marvel: ['spiderman', 'iron man']
 }
 
