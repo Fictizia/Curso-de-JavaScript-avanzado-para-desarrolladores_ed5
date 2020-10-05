@@ -274,8 +274,8 @@ function areaCirculo(r) {
   // πr^2
 }
 
-console.assert(perimetroCirculo(2) === 12.566370614359172)
-console.assert(perimetroCirculo(8) === 201.06192982974676)
+console.assert(areaCirculo(2) === 12.566370614359172)
+console.assert(areaCirculo(8) === 201.06192982974676)
 ```
 
 3. Crea una función que devuelva la hipotenusa de un triángulo a partir de sus catetos (Teorema de pitagoras).
