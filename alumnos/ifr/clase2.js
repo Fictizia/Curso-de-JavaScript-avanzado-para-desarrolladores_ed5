@@ -14,7 +14,7 @@ const isEven = number => number % 2 === 0;
 let result2 = isEven(2); //true
 result2 = isEven(3); // false
 
-//Ejercicio3
+//Ejercicio3 v.1
 
 // Esta solución usa eval que al parecer es el demonio, NO VÁLIDA
 // const operations = {
@@ -26,6 +26,8 @@ result2 = isEven(3); // false
 
 // const getResult = (num1, num2, operation) => eval(`${num1}${operations[operation]}${num2}`);
 
+
+//Ejercicio 3 v.2
 
 const suma = (num1, num2) => num1 + num2;
 const resta = (num1, num2) => num1 - num2;
@@ -57,7 +59,29 @@ const getOperation = operator => {
 
 const getResult = (a, b, operation) => getOperation(operation)(a, b);
 
+//Ej3 v.3
+const suma = (num1, num2) => num1 + num2;
+const resta = (num1, num2) => num1 - num2;
+const multiplicacion = (num1, num2) => num1 * num2;
+const division = (num1, num2) => num1 / num2;
 
+const getResult = (a, b, operation ) => operation(a, b);
+
+//Ej
+const suma = (num1, num2) => num1 + num2;
+const resta = (num1, num2) => num1 - num2;
+const multiplicacion = (num1, num2) => num1 * num2;
+const division = (num1, num2) => num1 / num2;
+const error2 = () => console.log('Operación no contemplada, se admiten: suma, resta, multiplicación, división')
+
+const getResult = (a, b, operation ) =>{
+    try {
+       return operation(a, b);
+    } catch (error) {
+       console.error('Irene ' + error)
+    }
+     
+    };
 
 //Ejercicio 4
 // Maximo múltiplo de divisor menor que el límite
