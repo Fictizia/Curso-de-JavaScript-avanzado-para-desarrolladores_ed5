@@ -1,9 +1,20 @@
+//PRIMERA OPCIÓN
+// const valueAndLimit = (value, limit) => {
+//   let result;
+//   for (let i = limit; i > 0; i--) {
+//     if (i % value === 0) {
+//       result = i;
+//       break;
+//     }
+//   }
+//   return result;
+// };
+
 const valueAndLimit = (value, limit) => {
   let result;
   for (let i = limit; i > 0; i--) {
     if (i % value === 0) {
-      result = i;
-      break;
+      return (result = i);
     }
   }
   return result;

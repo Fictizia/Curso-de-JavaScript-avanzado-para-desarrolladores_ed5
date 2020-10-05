@@ -16,20 +16,17 @@ const orderArray = (array) => {
         } else {
           newArray.splice(0, 0, array[i]);
         }
-        break;
       } else {
         if (
           array[i] === newArray[j] ||
           (array[i] > newArray[j] && array[i] < newArray[j + 1])
         ) {
           newArray.splice(j + 1, 0, array[i]);
-          break;
+          break; //No sé como hacerlo sin este Break porque entra en bucle
         } else if (array[i] > newArray[newArray.length - 1]) {
           newArray.push(array[i]);
-          break;
         } else if (array[i] < newArray[0]) {
           newArray.splice(0, 0, array[i]);
-          break;
         }
       }
     }

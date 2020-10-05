@@ -8,9 +8,11 @@ const treeGrowing = (grow, shrink, desiredHeight) => {
     if (height < desiredHeight) {
       height -= shrink;
       nights++;
-    } else {
-      break;
     }
+    //esta condición no hace falta
+    // else {
+    //   break;
+    // }
   }
   return `Tu árbol tardará en llegar ${desiredHeight} metros ${days} días y ${nights} noches`;
 };
