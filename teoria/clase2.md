@@ -549,13 +549,98 @@ for (const valor of iterable){
 
 1. Dado un array de números enteros positivos desordenados, devolver otro array con los números ordenados.
 
+Como hablamos en clase, este problema es uno de los más complejos de la informática. En [este](https://itnext.io/sorting-algorithms-in-javascript-4c3b7b80e88d) enlace podéis ver diferentes acercamientos para solucionarlo de forma gráfica junto con el código.
+
+```javascript
+// Lo que nos gustaría
+function ordenar(arr) {
+  return [...arr].sort()
+}
+
+
+// Ya que alguien hizo spoiler del Bubble, aquí lo tenéis
+function ordenar(arr) {
+  const nuevoArray = [...arr]
+  for (let i = 0; i < nuevoArray.length ; i++) {
+    for(let j = 0 ; j < nuevoArray.length - i - 1; j++){
+    if (nuevoArray[j] > nuevoArray[j + 1]) {
+      let temporal = nuevoArray[j];
+      nuevoArray[j] = nuevoArray[j+1];
+      nuevoArray[j + 1] = temporal;
+    }
+    }
+  }
+  return nuevoArray;
+}
+```
+
 2. Crear una función que reciba un número entero positivo y devuelva true si dicho número es par o false en caso contrario.
+
+```javascript
+function esPar (numero) {
+  return numero % 2 === 0;
+}
+```
 
 3. Crear una función que recibe dos números y un operador (su nombre como string) y que devuelve el resultado de aplicar dicha operación a los dos números proporcionados.
 
+```javascript
+
+function calculadora(num1, num2, operador) {
+  const operadorMinuscula = operador.toLowerCase();
+  switch(operadorMinuscula) {
+    case "suma":
+      return num1 + num2;
+    case "resta":
+      return num1 - num2;
+    case "multiplicación":
+    case "multiplicacion":
+      return num1 * num2;
+    case "division":
+    case "división":
+      return num1 / num2;
+    default:
+      console.log("La has liao parda");
+  }
+}
+
+
+```
+
 4. Crear una función que reciba un `divisor` y un `limite` y devuelva el mayor número divisible por `divisor` menor que `limite`. Ambos valores serán siempre enteros positivos.
 
+```javascript
+// Cómo lo haría yo
+function maximoDivisible (divisor, limite) {
+  for(let i = limite - 1;  i > 0; i--) {
+    if (i % divisor === 0) {
+      return i;
+    }
+  }
+}
+
+// La solución más óptima
+function maximoDivisible (divisor, limite) {
+  return limite - (limite % divisor);
+}
+```
+
 5. Cada día una planta crece en metros en base a su `velocidadCrecimiento`. Cada noche, dicha planta decrece en metros en base a su `velocidadDecrecimiento` debido a la falta de sol. Cuando nace, mide exactamente 0 metros. Queremos saber los días que tardará una planta en alcanzar cierta `alturaDeseada`. Crear una función que reciba `velocidadCrecimiento`, `velocidadDecrecimiento` y `alturaDeseada` como números enteros positivos y devuelva el número de días que tardará la planta en medir la `alturaDeseada`.
+
+```javascript
+function calcularDiasCrecimiento(velocidadCrecimiento, velocidadDecrecimiento, alturaDeseada) {
+  let altura = 0;
+  let dias = 0;
+  while (altura < alturaDeseada) {
+    altura += velocidadCrecimiento;
+    dias++;
+    if (altura >= alturaDeseada) { return dias }
+    altura -= velocidadDecrecimiento;
+  }
+  return dias;
+}
+
+```
 
 6. Tengo algunos traumitas con los números. No muchos, pero los tengo. Pero no acaba ahí, depende del día de la semana mi trauma cambia:
 
@@ -568,3 +653,29 @@ for (const valor of iterable){
 - El día del señor detesto a su enemigo en cualquiera de sus formas (666 y -666)
 
 Escribir una función que reciba el día de la semana como cadena de texto y un número y me recuerde si hoy odio ese número o no
+
+```javascript
+
+function aquiHayOdio(dia, numero) {
+  const diaMinus = dia.toLowerCase();
+  switch(diaMinus) {
+    case 'lunes':
+      return numero === 12;
+    case 'martes':
+      return numero >=85
+    case 'miercoles':
+    case 'miércoles':
+      return numero  === 34;
+    case 'jueves':
+      return numero === 0;
+    case 'viernes':
+      return numero % 2 === 0;
+    case 'sábado':
+    case 'sabado':
+      return numero === 56;
+    case 'domingo':
+      return numero === 666 || numero === -666;
+  }
+}
+
+```
