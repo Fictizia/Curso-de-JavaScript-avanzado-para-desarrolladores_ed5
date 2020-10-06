@@ -13,16 +13,19 @@ function growthOfPlant(vC, vD, desiredHeight) {
 		return "Así la planta nunca va a crecer";
 	}
 	const growth = vC - vD;
-	days = 0;
+	let days = 0;
 	for (var i=growth; i<desiredHeight;) {
 		i += growth;
 		days++;
 		console.log(`Día ${days} - ${i} metros`);
+		if (vC >= desiredHeight) {
+			return days;
+		}
 	}
 	console.log(`Total ${days} días`);
 	return days;
 }
 
-growthOfPlant(10,5,30); 
+growthOfPlant(10,9,4); 
 
 
