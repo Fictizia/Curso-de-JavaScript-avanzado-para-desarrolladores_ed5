@@ -8,14 +8,23 @@
  * de días que tardará la planta en medir la alturaDeseada.
  */
 
+const daysToSeconds = (days) => days * 24 * 60 * 60;
+
+const getDaysHoursMinutes = (days, seconds) => ({
+  days: Math.floor(days),
+  hours: new Date(seconds * 1000).getHours(),
+  minutes: new Date(seconds * 1000).getMinutes(),
+})
+
 const growRate = (
-  velocidadCrecimiento,
-  velocidadDecrecimiento,
-  alturaDeseada
+  growthSpeed,
+  decreaseSpeed,
+  desiredHeight
 ) => {
-  if (alturaDeseada <= 0) return 'Es posible que hayas plantado patatas??';
-  if (velocidadCrecimiento < velocidadDecrecimiento) {
+  if (desiredHeight <= 0) return 'Es posible que hayas plantado patatas??';
+  if (growthSpeed < decreaseSpeed) {
     return 'La velocidad de crecimiento no puede ser menor a la de decrecimiento';
   }
-  return alturaDeseada / (velocidadCrecimiento - velocidadDecrecimiento)
+  const days = desiredHeight / (growthSpeed - decreaseSpeed);
+  return getDaysHoursMinutes(days, daysToSeconds(days))
 }
