@@ -4,9 +4,7 @@ function ponCamelCase(str) {
   const separado = str.split(" ");
   let resultado = " ";
   for (const palabra of separado) {
-    resultado = `${palabra[0].trim}${palabra[0].toLowerCase()}${palabra
-      .slice(2)
-      .toUpperCase()}`;
+    resultado = `${palabra[0].toUpperCase()}${palabra.slice(1).toLowerCase()}`;
   }
   return resultado;
 }
