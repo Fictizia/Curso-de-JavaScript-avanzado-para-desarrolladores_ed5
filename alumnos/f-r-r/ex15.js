@@ -19,3 +19,22 @@
 // Input: '0000000010' Output: 100
 
 // Input: 'X00X000000X10X0100' Output: ~42.857142857142854
+
+const zombiPeopleCalc = str => {
+    const continents = str.split('X');  
+    let mundialPob  = 0;
+    let infectedPob = 0;
+    for (const people of continents) {
+      mundialPob += people.length;
+      if (people.includes(1)) {
+        infectedPob += people.length;
+      }
+    }
+    return infectedPob === 0 ? 0 : infectedPob * 100 / mundialPob;
+  }
+  
+ console.log(zombiPeopleCalc('01000000X000X011X0X')); // 73.33333333333333
+ console.log(zombiPeopleCalc('01X000X010X011XX'));    // 72.72727272727273
+ console.log(zombiPeopleCalc('XXXXX'));               // 0
+ console.log(zombiPeopleCalc('0000000010'));          // 100
+ console.log(zombiPeopleCalc('X00X000000X10X0100'));  // 42.857142857142854
