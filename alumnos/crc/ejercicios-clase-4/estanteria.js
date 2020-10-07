@@ -37,8 +37,8 @@ const estanteria = {
     })
   },
   sugerencia() {
-    const randomNumber = Math.floor(Math.random() * this.libros.length);
-    const randomBook = this.libros.filter(libro => !libro.leido)[randomNumber];
-    console.log(`Te sugiero el libro ${randomBook.nombre} de ${randomBook.autor}`)
+    const unreadBooks = this.libros.filter(libro => !libro.leido);
+    const randomNumber = Math.floor(Math.random() * unreadBooks.length);
+    console.log(`Te sugiero el libro ${unreadBooks[randomNumber].nombre} de ${unreadBooks[randomNumber].autor}`)
   }
 }
