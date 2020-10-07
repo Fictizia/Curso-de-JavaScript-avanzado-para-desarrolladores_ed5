@@ -1,0 +1,6 @@
+- Nombre y apellidos: Concha Asensio
+- Editor de código y sistema operativo: VS Code en macOS.
+- Hobbies: viajar, las motos, judo, los caballos, las series y leer.
+- Tecnologías que conozco: HTML, CSS/SASS, JavaScript, React. En cuanto a proyecto, me gustaría realizar una página en la que poder subir vídeos de entrenamientos para realizar en casa.
+- Libro: Los renglones torcidos de Dios y El Señor de los anillos. Serie: Fringe. Película: La historia interminable.
+- Conocí el curso buscando formaciones por internet y a través de compañeras de Adalab.
