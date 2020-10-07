@@ -5,10 +5,10 @@ function ponPrimeraMayuscula(str) {
   let newArray = [];
   let finalStr;
   for (word of strArray) {
-    let [capital, ...others] = word;
+    const [capital, ...others] = word;
     newArray.push(capital.toUpperCase().concat(others.join("")));
-    finalStr = newArray.join(" ");
   }
+  finalStr = newArray.join(" ");
   return finalStr;
 }
 console.assert(
