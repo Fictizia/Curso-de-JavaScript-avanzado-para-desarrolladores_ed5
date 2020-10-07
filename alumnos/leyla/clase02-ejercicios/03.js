@@ -22,3 +22,7 @@ function aplicarOperacion(num1, num2, operador) {
 console.info(aplicarOperacion(2, 3, "Suma")); // 5
 console.info(aplicarOperacion(6, 3, "resta")); // 3
 console.info(aplicarOperacion(6, 3, "algo")); // "No se reconoce el operador. Inténtelo nuevamente con otro valor."
+
+// Console.assert
+console.assert(aplicarOperacion(2, 3, "Suma") === 5);
+console.assert(aplicarOperacion(6, 3, "resta") === 3);

@@ -10,6 +10,10 @@ function cuantoTarda(velocidadCrecimiento, velocidadDecrecimiento, alturaDeseada
     while(metros <= alturaDeseada) {
         metros += velocidadCrecimiento;
         dias++;
+        if (metros >= alturaDeseada) { // parte agregada
+            return dias;                // parte agregada
+        }
+        metros -= velocidadDecrecimiento; // parte agregada
     }
 
     return `La planta tarda en crecer ${dias} días`;
