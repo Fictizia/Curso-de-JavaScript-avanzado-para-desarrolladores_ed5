@@ -27,3 +27,7 @@ Para asegurarnos de que los alumnos disponen del nivel suficiente de JS que les 
 | Documentación |  Teoría  | Descripción |
 | ------------- | -------- | ----------- |
 | Clase 1 | [Clase 1](teoria/clase1.md) | Presentación, historia y control de versiones |
+| Clase 2 | [Clase 1](teoria/clase2.md) | Repasando Javascript |
+| Clase 3 | [Clase 1](teoria/clase3.md) | Tipos en Javascript 1: number y string |
+| Clase 4 | [Clase 1](teoria/clase4.md) | Tipos en Javascript 2: object y function |
+| Clase 5 | [Clase 1](teoria/clase5.md) | Tipos en Javascript 3: function y arrays |
