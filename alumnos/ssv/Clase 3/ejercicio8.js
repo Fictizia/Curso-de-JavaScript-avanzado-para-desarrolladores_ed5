@@ -8,7 +8,7 @@
 // cualquier otra cosa --> 300th
 
 const getSufix = (num) => {
-  const lastNum = num.slice(-1);
+  const lastNum = num.toString().slice(-1);
   if (lastNum === '1') {
     return 'st';
   } else if (lastNum === '2') {
