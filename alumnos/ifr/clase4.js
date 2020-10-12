@@ -22,7 +22,7 @@ const carrito = {
 		}
 	],
     get precioTotal(){
-        return this.productos.reduce(({ precio: precioA, unidades: unidadesA }, { precio: precioB, unidades: unidadesB }) => precioA * unidadesA + precioB * unidadesB )
+        return this.productos.reduce((precioTotal, { unidades, precio }) => precioTotal + unidades * precio, 0 )
     }
 };
 
