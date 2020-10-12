@@ -43,7 +43,7 @@ const estanteria = {
           librosPrestados = libros.filter(libro => libro.leido)
           libros = libros.filter(libro => !libro.leido)
       } else {
-          libros = (...libros, ...librosPrestados)
+          libros = {...libros, ...librosPrestados}
           librosPrestados = []
       }
   }
