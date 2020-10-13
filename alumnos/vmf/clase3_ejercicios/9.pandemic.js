@@ -22,6 +22,7 @@ Input: 'X00X000000X10X0100' Output: ~42.857142857142854 */
 function pandemic(str) {
    const totalCities = str.split('X').join('').length; 
    const country = str.split('X');
+
    let infected = 0;
    for (let city of country) {
        if (city.includes('1')) {
@@ -30,7 +31,10 @@ function pandemic(str) {
             infected += city;
        }
    }
-   return resultado = infected * 100 / totalCities;
+   if (!str.includes('1') && !str.includes('0') ) {
+   	return 0;
+   }
+   return infected * 100 / totalCities;
 }
 
 pandemic("01000000X000X011X0X");
