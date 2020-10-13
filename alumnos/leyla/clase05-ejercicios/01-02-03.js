@@ -50,11 +50,9 @@ const estanteria = {
         });
         console.info("Libros ordenados!!", this.libros);
     },
-    prestamo: false, // Ejercicio 2
     librosPrestados: [], // Ejercicio 2
-    prestarRecuperarLibros(prestar) { // Ejercicio 2
-        this.prestamo = prestar;
-        if(this.prestamo) {
+    set prestamo(estado) { // Ejercicio 2
+        if(estado) {
             this.libros.forEach((libro, index) => {
                 if(libro.leido) {
                     let aux = this.libros.splice(index, 1);
@@ -64,7 +62,6 @@ const estanteria = {
             console.info("Acabo de prestar estos libros:", this.librosPrestados);
         } else { // Ejercicio 3
             this.libros = this.libros.concat(this.librosPrestados);
-            this.prestamo = false;
             this.librosPrestados = [];
             console.info("He recuperado todos mis libros:", this.libros);
         }
@@ -72,5 +69,5 @@ const estanteria = {
 }
 
 estanteria.ordenarPorNombre();
-estanteria.prestarRecuperarLibros(true);
-estanteria.prestarRecuperarLibros(false);
+estanteria.prestamo = true;
+estanteria.prestamo = false;
