@@ -13,7 +13,7 @@ Un método sugerencia que te devuelva de forma aletoria un el nombre
 de un libro y su autor que no hayas leído.
  */
 
-const estanteria = {
+let estanteria = {
   libros: [
     {
       nombre: 'El caballero oscuro',
@@ -47,21 +47,32 @@ const estanteria = {
     },
   ],
   log() {
-     return this.libros.reduce((acu, libro) => {
-      const fragmentoInicial = libro.leido ? "Aún no has leido" : "Ya has leido";
+     const resultado = this.libros.reduce((acu, libro) => {
+      const fragmentoInicial = libro.leido ? "Ya has leido" : "Aún no has leido";
       return `${fragmentoInicial} ${libro.nombre} de ${libro.autor}
       ${acu}`;
      }, '')
+     console.log(resultado);
   },
   sugerencia() {
     const librosFiltrados = this.libros.filter(libro => !libro.leido);
     const indiceRandom = Math.floor(Math.random() * librosFiltrados.length); // gracias stackOverFlow once again.
-    return `Sugerencia del día: ${librosFiltrados[indiceRandom].nombre} de ${librosFiltrados[indiceRandom].autor}, ¡quizá puede ser tu próximo libro!`;
+    const caca = `Sugerencia del día: ${librosFiltrados[indiceRandom].nombre} de ${librosFiltrados[indiceRandom].autor}, ¡quizá puede ser tu próximo libro!`;
+    console.log(caca);
   }
 }
+
+estanteria.log();
+estanteria.sugerencia();
 
 /*
  Dudas --> 
   1. Me cuesta debuggear lo que hay dentro... por console.log, tips para ir más rapido - no tengo ni idea.
   2. Hay alguna manera más organizada de hacer un salto de linea?
+
+  Reduce:
+  valorInicial Optional
+  Un valor a usar como primer argumento en la primera llamada de la función callback.
+  Si no se proporciona el valorInicial, el primer elemento del array será utilizado y saltado.
+  Llamando a reduce() sobre un array vacío sin un valorInicial lanzará un TypeError.
 */
