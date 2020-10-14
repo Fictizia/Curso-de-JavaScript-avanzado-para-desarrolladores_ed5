@@ -354,7 +354,14 @@ const carrito = {
     nombre: 'chocolate',
     unidades: 2,
     precio: 1.5
-  }]
+  }],
+  get precioTotal() {
+    let precio = 0;
+    for (let i = 0; i < this.productos.length; i++) {
+      precio += this.productos[i].unidades * this.productos[i].precio;
+    }
+    return precio;
+  }
 }
 ```
 
@@ -406,7 +413,23 @@ const estanteria = {
     nombre: 'Iliada',
     autor: 'Homero',
     leido: false
-  }]
+  }],
+  log() {
+    const { libros } = this;
+    let resultado = ''
+    for (const libro of libros) {
+      const prefijo = libro.leido ? 'Ya has' : 'Aun no has';
+      resultado = `${resultado}
+${prefijo} leído ${libro.nombre} de ${libro.autor}`
+    }
+    console.log(resultado)
+  },
+  sugerencia() {
+    const librosNoLeidos = this.libros.filter(libro => !libro.leido)
+    const indiceRandom = Math.floor(librosNoLeidos.length * Math.random())
+    const elementoRandom = librosNoLeidos[indiceRandom]
+    console.log(`Te sugiero ${elementoRandom.nombre} de ${elementoRandom.autor}`)
+  }
 }
 ```
 

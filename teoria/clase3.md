@@ -515,6 +515,17 @@ console.assert(camelize("Hola a todos que tal") === "holaATodosQueTal");
 
 ```javascript
 function(num) {
+  const lastNumber = num % 10
+  switch(lastNumer) {
+    case 1:
+      return `${num}st`;
+    case 2:
+      return `${num}nd`;
+    case 3:
+      return `${num}rd`;
+    default:
+      return `${num}th`
+  }
 }
 ```
 
@@ -542,3 +553,21 @@ Casos de prueba:
 - Input: '0000000010' Output: 100
 
 - Input: 'X00X000000X10X0100' Output: ~42.857142857142854
+
+
+```javascript
+function infected(s) {
+   let numOfInfecteds = 0
+   const total = s.replace(/X/g, '').length
+   if(total === 0) {
+     return numOfInfecteds
+    }
+   const continents = s.split('X')
+   for(const i of continents) {
+     if(i.includes('1')) {
+       numOfInfecteds += i.length
+     }
+   }
+   return (numOfInfecteds * 100) / total
+}
+```
