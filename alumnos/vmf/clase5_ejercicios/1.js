@@ -47,3 +47,5 @@ let estanteria = {
       });
     }
   }
+
+estanteria.ordenarPorNombre();
