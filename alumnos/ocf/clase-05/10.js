@@ -11,16 +11,19 @@ const carrito = {
     unidades: 2,
     precio: 1.5
   }],
-  calcularTotal: () => {
+
+  precioTotal: 0,
+
+  calcularTotal() {
     let producto = carrito.productos;
-    let precioTotal = 0;
-    
+    //let precioTotal = 0;
+
     for (let i = 0; i < producto.length; i++) {
       let item = producto[i];
-      precioTotal += (item.unidades * item.precio);
-    }    
-    return `${precioTotal.toFixed(2)} €`;
+      this.precioTotal += (item.unidades * item.precio);
+    }
+    return `${this.precioTotal.toFixed(2)} €`;
   }
 }
 
-carrito.calcularTotal() // '23.00 €'
+carrito.calcularTotal(); // '23.00 €'
