@@ -19,14 +19,15 @@ const carrito = {
       precio: 1.5,
     },
   ],
+    get precioTotal() {
+    let precioTotal = 0;
+    for (let i = 0; i < carrito.productos.length; i += 1) {
+      precioTotal += carrito.productos[i].precio * carrito.productos[i].unidades;
+    }
+    return precioTotal;
+  }
 };
 
-function precioTotal() {
-  let precioTotal = 0;
-  for (let i = 0; i < carrito.productos.length; i += 1) {
-    precioTotal += carrito.productos[i].precio * carrito.productos[i].unidades;
-  }
-  return precioTotal;
-}
 
-console.log(precioTotal());
+
+console.log(carrito.precioTotal);

@@ -14,4 +14,3 @@ function devuelveOrdinal(num) {
   }
   
   console.log(devuelveOrdinal(7));
-  
