@@ -7,7 +7,6 @@
   - Map
   - Date
   - Proxy & Reflect
-  - Modulos
 
 ## Clase 6
 

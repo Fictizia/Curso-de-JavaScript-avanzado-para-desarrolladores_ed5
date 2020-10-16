@@ -30,4 +30,6 @@ Para asegurarnos de que los alumnos disponen del nivel suficiente de JS que les 
 | Clase 2 | [Clase 2](teoria/clase2.md) | Repasando Javascript |
 | Clase 3 | [Clase 3](teoria/clase3.md) | Tipos en Javascript 1: number y string |
 | Clase 4 | [Clase 4](teoria/clase4.md) | Tipos en Javascript 2: object y function |
-| Clase 5 | [Clase 5](teoria/clase5.md) | Tipos en Javascript 3: function y arrays |
+| Clase 5 | [Clase 5](teoria/clase5.md) | Tipos en Javascript 3: function y Derivados de Object 1: arrays |
+| Clase 6 | [Clase 6](teoria/clase6.md) | Derivados de Object 2: Set, Map, Date, Proxy & Reflec |
+| Clase 7 | [Clase 7](teoria/clase7.md) | Derivados de Object: Modulos y Regexp |
