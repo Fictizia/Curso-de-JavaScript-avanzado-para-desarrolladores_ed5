@@ -58,4 +58,8 @@ function setProductInShoppingCar(myProduct) {
 }
 
 
-setProductInShoppingCar({ name: 1, price: 19 }) // show error message "String nede"
+setProductInShoppingCar({ name: 1, price: 19 }) // -> show error message "String nedeed in property:name"
+setProductInShoppingCar({ name: 'randomproduct', price: 'qwe' }) // -> show error message "Number nedeed in property:price"
+setProductInShoppingCar({ name: 'cookies', price: 19 })
+setProductInShoppingCar({ name: 'cookies', price: 12 })
+setProductInShoppingCar({ name: 'watermelon', price: 2 })
