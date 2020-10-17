@@ -12,10 +12,10 @@ const imageRegex = /(<img.*?src="(.*?)".*?alt="(.*?)")/
 const articlesElements = profesores.match(articleRegex)
 
 const teachers = articlesElements.map(articleElement => {
-  const imageData = articleElement.match(imageRegex)
+  const [, , image, name] = articleElement.match(imageRegex)
   return {
-    name: imageData[3],
-    image: imageData[2]
+    name,
+    image
   }
 })
 
