@@ -26,7 +26,7 @@ function pandemic(str) {
    let infected = 0;
    for (let city of country) {
        if (city.includes('1')) {
-            var find = "0" 
+            const find = "0" 
             city = city.replace(new RegExp(find,"g") ,"1").length; 
             infected += city;
        }
