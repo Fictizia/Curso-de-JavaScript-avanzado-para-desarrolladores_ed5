@@ -7,14 +7,8 @@ function ponPrimeraMayuscula(str) {
         palabra.charAt(0).toUpperCase().concat(palabra.substring(1))
       );
   
-    return palabras;
+    return palabras.join(' ');
   }
-  
-  console.log(
-    ponPrimeraMayuscula(
-      "En un lugar de la Mancha de cuyo nombre no quiero acordarme"
-    )
-  );
   
   console.assert(
     ponPrimeraMayuscula(
