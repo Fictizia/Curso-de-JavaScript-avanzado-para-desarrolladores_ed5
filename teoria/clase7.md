@@ -166,7 +166,7 @@ laManchaRegex.test(fraseMillenial)
 
 **Ejercicio**
 
-1. Que pesado Aquaman. No sabemos cómo hacer para que tranquilos a los miembros de la Liga de la Justica. Ha comenzado a entrar usando variaciones de su nombre: aQuaman, AQUAMAN, aquaman... Crear una función que reciba un listado de héroes como strings y devuelva la posición del array en la que está Aquaman o un -1 si no estuviera.
+1. Que pesado Aquaman. No sabemos cómo hacer para que tranquilos a los miembros de la Liga de la Justica. Hacomenzao a entrar usando variaciones de su nombre: aQuaman, AQUAMAN, aquaman... Crear una función que reciba un listao de héroes como strings y devuelva la posición del array en la que está Aquaman o un -1 si no estuviera.
 
 * Agrupando
   * `[]`: Grupo de caracteres:
@@ -310,7 +310,7 @@ entre3Y4Juntos.test(saludo)
 
   * `(?)`: Crea un grupo de no-captura.
   * `(?:)`: Sirve para agrupar caracteres sin crear un grupo de captura
-  * `\n`: Utiliza el valor capturado de índice n.
+  * `\n`: Utiliza el valor capturaode índice n.
 
   ```javascript
     const numerosRepetidos = '1123456'
