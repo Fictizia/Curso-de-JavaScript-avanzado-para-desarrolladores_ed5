@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <button id="miBoton">Añade item</button>
+    <ul id="miLista">
+
+    </ul>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            let contador = 1;
+            const boton = document.getElementById('miBoton')
+            const lista = document.getElementById('miLista')
+            boton.addEventListener('click', function() {
+                const nuevoLi = document.createElement('li');
+                const contenido = document.createTextNode(`Item ${contador}`);
+                nuevoLi.append(contenido)
+
+                setTimeout(function() {
+                    lista.append(nuevoLi)
+                }, 1500)
+                contador += 1;
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -4,12 +4,126 @@
 
 ## Clase 8
 
-- Derivados de Object
-  - Event
 - Asincronía en JS
   * Como funciona
+  * Event
   * Callbacks
   * Promesas
+
+### Asincronia
+
+Una de las características de JS, es que es monohilo. Esto, a nivel técnico, significa que JS sólo una cosa puede ocurrir a la vez. Es decir, JS SOLO puede procesar una sentencia cada vez en ese hilo.
+
+Esto tiene sus ventajas y desventajas, ya que si bien no tienes que preocuparte de la concurrencia, hay ciertas acciones (llamadas http, procesamiento de imágenes, etc) que necesitan de más tiempo para procesarse y, por tanto, bloquean este hilo. Para que esto no sea un bloqueo, se utilizan cierto mecanismos de asincronía (callbacks, promises, async/await) que permiten desbloquear el hilo de ejecución.
+
+```javascript
+setTimeout(() => console.log('hola, hola'), 0)
+
+console.log('Adios, adios')
+```
+
+#### La base
+
+Antes de conocer estas herramientas, intentaremos entender cómo funciona la asincronía en el motor de JS.
+
+Tomemos el siguiente código Javascript (100% síncrono) como ejemplo:
+
+```javascript
+const miSegunda = () => {
+  console.log('Toh bien mano');
+}
+
+const miPrimera = () => {
+  console.log('Qué pasa premoh');
+  miSegunda();
+  console.log('Que bueno pana');
+}
+
+miPrimera()
+```
+
+
+#### Contexto de ejecución
+
+Es un concepto abstracto que se refiere al lugar donde el código JS se evalúa y se ejecuta. Todo el código JS se ejecuta en un contexto de ejecución. Cuando creamos una función se crea su propio contexto de ejecución de función, mientras que cuando tenemos código global, este se ejecuta en el contexto global.
+
+#### Pila de llamadas
+
+La pila de llamadas (o call stack) es una estructura LIFO donde se almacenan todos los contextos creados durante la ejecución del código. Al ser monohilo, JS tiene una única pila de llamadas.
+
+#### ¿Cómo se une esto?
+
+![Call Stack](../assets/clase8/call-stack.png)
+
+1. Nuestro código empieza a ejecutarse, Se crea un contexto de ejecución global `main()` y se apila.
+2. Aparece una llamada a la función `miPrimera()`. Así que se apila y comienza su ejecución.
+3. Se comienza a ejecutar el nuevo contexto, así que se apila la llamada a `console.log()`.
+4. Como la ejecución de `console.log()` ha acabado, desaparece de la pila.
+5. Aparece una llamada a la función `miSegunda()`. Se apila y se empieza a ejecutar.
+6. Se ejecuta `console.log()` y se añade a la pila.
+7. Como la ejecución de `console.log()` ha acabado, desaparece de la pila.
+8. Como la ejecución de `miSegunda()` ha acabado, desaparece de la pila.
+9. Se ejecuta `console.log()` y se añade a la pila.
+10. Como la ejecución de `console.log()` ha acabado, desaparece de la pila.
+11. Como la ejecución de `miPrimera()` ha acabado, desaparece de la pila.
+12. Como la ejecución de `main()` ha acabado, desaparece de la pila. Fin del programa.
+
+#### ¿Qué pasa con el código asíncrono?
+
+Si en este esquema hubiera una pieza de código que, por el motivo que sea, requiriera de más tiempo para ser ejecutada, nuestro código se vería lastrado por la ejecución de esta. Para solucionar este problema, es preciso que antes entendamos cómo y donde se ejecuta JS.
+
+#### Entorno de ejecución
+
+El entorno de ejecución hace referencia al lugar donde se ejecuta el código Javascript. Aunque tradicionalmente Javascript ha sido un lenguaje de Front que se ejecutaba en el navegador, desde la aparición de NodeJS también podemos ejecutarlo en Servidor. Esto hace que haya dos entornos diferentes que proveen de APIs concretas. Por un lado tenemos el navegador, que nos provee de una serie de APIs y de métodos propios orientados a tratar en un entorno como es el navegador. En el caso de NodeJs, este tiene una serie de APIs propias que son distintas a las del navegador, ya que el tipo de problemas que hay en un servidor no tienen por qué ser los mismos.
+
+Por ejemplo, mientras que el navegador provee métodos específicos para el manejo del DOM, gestión de eventos o el famoso `Fetch`, estos no están presentes en NodeJs. Al igual, mientras que en NodeJs tenemos de forma nativa la manipulación de ficheros, esta no está presente en los navegadores. Sin embargo, funciones como `setTimeout` o `setInterval` están en ambos entornos de ejecución, pero no son parte del motor de JS.
+
+Cuando creamos un manejador de eventos, este se guarda en el entorno correspondiente ya que los eventos no pertenecen al motor de Javascript.
+
+#### Cola de mensajes
+
+Es una cola (FIFO) donde se almacenan las funciones callback que se tienen que ejecutar en orden. Cuando no hay nada apilado en la pila de llamadas, la función callback se envía a la pila. Este proceso se repite tantas veces cómo callbacks haya encolados.
+
+#### Loop de eventos
+
+Este loop de eventos es el corazón de la asincronía de JS. Se encarga de comprobar constantemente el estado de la pila y de la cola de mensajes. En el momento en que la pila de llamadas se queda vacía, notifica a la cola de mensajes por si esta tuviera callbacks que ejecutar.
+
+#### ¿Cómo se conecta todo esto?
+
+Partamos de este código asíncrono en el que vamos a emular una llamada HTTP:
+
+```javascript
+
+const llamadaHTTP = () => {
+  setTimeout(() => {
+    console.log('Ha pasado un segundo y medio');
+  }, 1500);
+}
+
+console.log('Inicio del programa');
+
+llamadaHTTP();
+
+console.log('Fin del programa')
+```
+
+Cuando se inicia la ejecución del programa ocurre lo siguiente:
+
+1. Se apila el contexto de ejecución global en el call stack.
+2. Se apila la invocación a `console.log`.
+3. `console.log` acaba y se desapila.
+4. Se apila la ejecución de `llamadaHTTP` y comienza su ejecución.
+5. Se apila la llamada a `setTimeout`.
+6. `setTimeout` crea un temporizador de 1 segundo y medio en el entorno de ejecución del navegador.
+7. Como la ejecución de `setTimeout` ha acabado, se desapila.
+8. Como no hay nada más que ejecutar en `llamadaHTTP`, se desapila.
+9. Se apila la ejecución de `console.log()`
+10. `console.log` acaba y se desapila.
+11. Como ha pasado un segundo y medio el callback de `setTimeout` llega a la cola de mensajes.
+12. Como la pila de llamadas está vacía, el event loop notifica a la cola y se apila en la pila de llamadas el callback del `setTimeout`.
+13. Como la ejecución del `callback` ha acabado, esta se desapila.
+
+[Demo](http://latentflip.com/loupe)
 
 ### Eventos
 
@@ -225,121 +339,6 @@ const manejadorConDebounce = debouncer(1000, manejador)
 document.addEventListener('mousemove', manejadorConDebounce)
 ```
 
-### Asincronia
-
-Una de las características de JS, es que es monohilo. Esto, a nivel técnico, significa que JS sólo una cosa puede ocurrir a la vez. Es decir, JS SOLO puede procesar una sentencia cada vez en ese hilo.
-
-Esto tiene sus ventajas y desventajas, ya que si bien no tienes que preocuparte de la concurrencia, hay ciertas acciones (llamadas http, procesamiento de imágenes, etc) que necesitan de más tiempo para procesarse y, por tanto, bloquean este hilo. Para que esto no sea un bloqueo, se utilizan cierto mecanismos de asincronía (callbacks, promises, async/await) que permiten desbloquear el hilo de ejecución.
-
-```javascript
-setTimeout(() => console.log('hola, hola'), 0)
-
-console.log('Adios, adios')
-```
-
-#### La base
-
-Antes de conocer estas herramientas, intentaremos entender cómo funciona la asincronía en el motor de JS.
-
-Tomemos el siguiente código Javascript (100% síncrono) como ejemplo:
-
-```javascript
-const miSegunda = () => {
-  console.log('Toh bien mano');
-}
-
-const miPrimera = () => {
-  console.log('Qué pasa premoh');
-  miSegunda();
-  console.log('Que bueno pana');
-}
-
-miPrimera()
-```
-
-
-#### Contexto de ejecución
-
-Es un concepto abstracto que se refiere al lugar donde el código JS se evalúa y se ejecuta. Todo el código JS se ejecuta en un contexto de ejecución. Cuando creamos una función se crea su propio contexto de ejecución de función, mientras que cuando tenemos código global, este se ejecuta en el contexto global.
-
-#### Pila de llamadas
-
-La pila de llamadas (o call stack) es una estructura LIFO donde se almacenan todos los contextos creados durante la ejecución del código. Al ser monohilo, JS tiene una única pila de llamadas.
-
-#### ¿Cómo se une esto?
-
-![Call Stack](../assets/clase8/call-stack.png)
-
-1. Nuestro código empieza a ejecutarse, Se crea un contexto de ejecución global `main()` y se apila.
-2. Aparece una llamada a la función `miPrimera()`. Así que se apila y comienza su ejecución.
-3. Se comienza a ejecutar el nuevo contexto, así que se apila la llamada a `console.log()`.
-4. Como la ejecución de `console.log()` ha acabado, desaparece de la pila.
-5. Aparece una llamada a la función `miSegunda()`. Se apila y se empieza a ejecutar.
-6. Se ejecuta `console.log()` y se añade a la pila.
-7. Como la ejecución de `console.log()` ha acabado, desaparece de la pila.
-8. Como la ejecución de `miSegunda()` ha acabado, desaparece de la pila.
-9. Se ejecuta `console.log()` y se añade a la pila.
-10. Como la ejecución de `console.log()` ha acabado, desaparece de la pila.
-11. Como la ejecución de `miPrimera()` ha acabado, desaparece de la pila.
-12. Como la ejecución de `main()` ha acabado, desaparece de la pila. Fin del programa.
-
-#### ¿Qué pasa con el código asíncrono?
-
-Si en este esquema hubiera una pieza de código que, por el motivo que sea, requiriera de más tiempo para ser ejecutada, nuestro código se vería lastrado por la ejecución de esta. Para solucionar este problema, es preciso que antes entendamos cómo y donde se ejecuta JS.
-
-#### Entorno de ejecución
-
-El entorno de ejecución hace referencia al lugar donde se ejecuta el código Javascript. Aunque tradicionalmente Javascript ha sido un lenguaje de Front que se ejecutaba en el navegador, desde la aparición de NodeJS también podemos ejecutarlo en Servidor. Esto hace que haya dos entornos diferentes que proveen de APIs concretas. Por un lado tenemos el navegador, que nos provee de una serie de APIs y de métodos propios orientados a tratar en un entorno como es el navegador. En el caso de NodeJs, este tiene una serie de APIs propias que son distintas a las del navegador, ya que el tipo de problemas que hay en un servidor no tienen por qué ser los mismos.
-
-Por ejemplo, mientras que el navegador provee métodos específicos para el manejo del DOM, gestión de eventos o el famoso `Fetch`, estos no están presentes en NodeJs. Al igual, mientras que en NodeJs tenemos de forma nativa la manipulación de ficheros, esta no está presente en los navegadores. Sin embargo, funciones como `setTimeout` o `setInterval` están en ambos entornos de ejecución, pero no son parte del motor de JS.
-
-Cuando creamos un manejador de eventos, este se guarda en el entorno correspondiente ya que los eventos no pertenecen al motor de Javascript.
-
-#### Cola de mensajes
-
-Es una cola (FIFO) donde se almacenan las funciones callback que se tienen que ejecutar en orden. Cuando no hay nada apilado en la pila de llamadas, la función callback se envía a la pila. Este proceso se repite tantas veces cómo callbacks haya encolados.
-
-#### Loop de eventos
-
-Este loop de eventos es el corazón de la asincronía de JS. Se encarga de comprobar constantemente el estado de la pila y de la cola de mensajes. En el momento en que la pila de llamadas se queda vacía, notifica a la cola de mensajes por si esta tuviera callbacks que ejecutar.
-
-#### ¿Cómo se conecta todo esto?
-
-Partamos de este código asíncrono en el que vamos a emular una llamada HTTP:
-
-```javascript
-
-const llamadaHTTP = () => {
-  setTimeout(() => {
-    console.log('Ha pasado un segundo y medio');
-  }, 1500);
-}
-
-console.log('Inicio del programa');
-
-llamadaHTTP();
-
-console.log('Fin del programa')
-```
-
-Cuando se inicia la ejecución del programa ocurre lo siguiente:
-
-1. Se apila el contexto de ejecución global en el call stack.
-2. Se apila la invocación a `console.log`.
-3. `console.log` acaba y se desapila.
-4. Se apila la ejecución de `llamadaHTTP` y comienza su ejecución.
-5. Se apila la llamada a `setTimeout`.
-6. `setTimeout` crea un temporizador de 1 segundo y medio en el entorno de ejecución del navegador.
-7. Como la ejecución de `setTimeout` ha acabado, se desapila.
-8. Como no hay nada más que ejecutar en `llamadaHTTP`, se desapila.
-9. Se apila la ejecución de `console.log()`
-10. `console.log` acaba y se desapila.
-11. Como ha pasado un segundo y medio el callback de `setTimeout` llega a la cola de mensajes.
-12. Como la pila de llamadas está vacía, el event loop notifica a la cola y se apila en la pila de llamadas el callback del `setTimeout`.
-13. Como la ejecución del `callback` ha acabado, esta se desapila.
-
-[Demo](http://latentflip.com/loupe)
-
 #### Callbacks
 
 Un callback es una función que se pasa como parámetro a otra función para que sea esta última la que la ejecute. Esta función puede estar previamente declarada o podemos declararla en el mismo momento que la pasamos como argumento. Es importante entender que al pasar la función no la estamos ejecutando. Es la función a la que le pasamos el callback la que decide cuando se ejecuta.
@@ -376,7 +375,7 @@ document.body.addEventListener('click', miCallback)
 También, podemos anidarlos.
 
 
-[Demo](../ejercicios/clase8/index.html)
+[Demo](../ejemplos/clase8/index.html)
 
 ```html
 <!DOCTYPE html>
@@ -840,3 +839,8 @@ new Promise(function(resolve, reject) {
 })
 console.log('Acaba la carrera')
 ```
+
+### Enlaces de interés
+
+- [✨♻️ JavaScript Visualized: Event Loop](https://dev.to/lydiahallie/javascript-visualized-event-loop-3dif)
+- [⭐️🎀 JavaScript Visualized: Promises & Async/Await](https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke)
