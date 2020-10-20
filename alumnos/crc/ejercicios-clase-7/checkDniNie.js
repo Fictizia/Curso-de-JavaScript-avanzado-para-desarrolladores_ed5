@@ -1,4 +1,4 @@
-const regexDNINIE = /(([0-9]{8})([A-Z]{1}))|(([XZY]{1})([0-9]{7})([A-Z]{1}))/
+const regexDNINIE = /(([0-9]{8})([A-Z]))|(([XZY])([0-9]{7})([A-Z]))/
 
 function checkDNINIE(dninie) {
   return regexDNINIE.test(dninie);
