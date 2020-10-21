@@ -116,6 +116,7 @@ const arrayHeroes = [...setHeroes]
 ### Map
 
 Map es otra de las incorporaciones de ES6. Un Map es como un Objeto de JS, pero con algunas diferencias:
+
 - Las claves en objetos pueden ser números, strings o simbolos mientras que en un Map las claves pueden ser cualquier cosa.
 
 ```javascript

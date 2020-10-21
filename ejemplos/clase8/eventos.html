@@ -1,0 +1,41 @@
+<html>
+
+<head></head>
+
+<body>
+    <div id="papa">
+        <div id="hijo">
+            Pulsa aquí
+        </div>
+    </div>
+
+
+    <script>
+        const padre = document.getElementById('papa');
+        const hijo = document.getElementById('hijo');
+
+
+        hijo.addEventListener('click', function(event) {
+            console.log('Hijo ha llegado a la fase de captura');
+            console.log(event.eventPhase);
+        }, true);
+
+        hijo.addEventListener('click', function(event) {
+            console.log('Hijo ha llegado a la fase de bubbling');
+            console.log(event.eventPhase);
+        });
+
+        papa.addEventListener('click', function(event) {
+            console.log('Papa ha llegado a la fase de bubbling');
+            console.log(event.eventPhase);
+        });
+
+        papa.addEventListener('click', function(event) {
+            console.log('Papa ha llegado a la fase de captura');
+            console.log(event.eventPhase);
+        }, true);
+    </script>
+
+</body>
+
+</html>

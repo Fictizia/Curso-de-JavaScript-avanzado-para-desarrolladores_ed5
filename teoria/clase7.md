@@ -368,6 +368,3 @@ resultado = [{
   imagen: 'https://www.fictizia.com/app/images/fran-quesada.jpeg',
 }]
 ```
-
-
-12. Ir a (The regular expression game)[http://play.inginf.units.it/#/] e intentar superar el máximo de pruebas.

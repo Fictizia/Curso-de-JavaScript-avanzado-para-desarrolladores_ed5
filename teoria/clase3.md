@@ -459,7 +459,7 @@ console.log('      Yo soy Batman     '.trimEnd()) //       Yo soy Batman
 ```
 
 
-* `trimEnd()`: Primo hermano de trim, devuelve el string sin  espacios en blanco por inicio. Existe el alias `trimLeft`
+* `trimStart()`: Primo hermano de trim, devuelve el string sin  espacios en blanco por inicio. Existe el alias `trimLeft`
 
 ```javascript
 console.log('      Yo soy Batman     '.trimStart()) // Yo soy Batman
