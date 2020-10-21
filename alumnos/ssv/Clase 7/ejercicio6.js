@@ -4,7 +4,7 @@ const batmanSong = 'Na na na na na na na na na na na na na na na na... ¡BATMAN!
 
 function cancionSerieBatman(str) {
 
-  const batman = /(?:na.){16}[.][.]\s¡batman!/i;
+  const batman = /(?:na ){15}na[.][.][.]\s¡batman!/i;
   return batman.test(str)
 }
 console.log(cancionSerieBatman(batmanSong));
