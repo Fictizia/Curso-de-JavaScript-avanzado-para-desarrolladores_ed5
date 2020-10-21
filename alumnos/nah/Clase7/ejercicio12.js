@@ -18,9 +18,7 @@ const profesores = await getProfesores();
 let resultURL = regexURL.exec(profesores);
 let resultName = regexName.exec(profesores);
 while (resultName !== null && resultURL !== null) {
-  profesoresObject.push(
-    {'name': resultName[1], 
-    'imagen': resultURL[1]});
+  profesoresObject.push({'name': resultName[1], 'imagen': resultURL[1]});
    resultURL = regexURL.exec(profesores);
    resultName = regexName.exec(profesores);
 }
