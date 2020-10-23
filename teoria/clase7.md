@@ -97,7 +97,6 @@ import('./dc.js').then((dc) => {
 
 Una expresión regular es un patrón de búsqueda en forma de texto. Se convierten al final en un metalenguaje de búsqueda sobre cadenas de texto. Su uso suele estar ligado a como funciona este metalenguaje.
 
-
 #### Declaración
 
 Para crear nuevas `Regexps`, podemos usar el constructor de su clase o crearla usando `//flags`. El constructor de `Regexp` admite la expresión regular persé y, ademas, puede recibir ciertos flags.
@@ -244,7 +243,21 @@ const pluralRegex = /[a-z]+e?s/
 5. Crear una función que utilice una expresión regular para identificar si el parámetro `str` que recibe es una albóndiga. Tener en cuenta que (al igual que la RAE) hay que contemplar `almóndiga`.  Debe ser case insensitive.
 6. Crear una función que utilice una expresión regular para identificar si el parámetro `str` que recibe es la letra de la intro de la serie Batman de los 60. Dicha letra, de dificultad manificestat, dice lo siguiente: `Na na na na na na na na na na na na na na na na... ¡BATMAN!`. Debe ser case insensitive.
 
+```javascript
+function isBatmanSong(str) {
+  return /(na ){15}na... ¡BATMAN!/i.test(str);
+}
+
+```
+
 7. Crear una función que utilice una expresión regular para identificar si el parametro `str` que recibe es una dirección MAC o no. Una dirección MAC se compone de 6 pares de caracteres hexadecimales separados por `:`.
+
+
+```javascript
+function isMAC(str) {
+  return /^([a-f0-9]{2}:){5}[a-f0-9]{2}$/.test(str);
+}
+```
 
 ```javascript
 console.assert( regexp.test('01:32:54:67:89:AB'), true );
@@ -280,6 +293,12 @@ entre3Y4Juntos.test(saludo)
 
 **Ejercicio**:
 8. Crear una expresión regular que valide que un DNI/NIE tiene formato válido. Un DNI se compone de 8 números seguidos de una letra mayúscula. Un NIE se compone de un primer caracter que puede ser X,Y o Z seguido de 7 números y acaba en una letra mayúscula. Puede llevar o no un guión antes de la última letra.
+
+```javascript
+function isNie(str) {
+
+}
+```
 
 * Grupos de captura:
 
@@ -348,6 +367,21 @@ entre3Y4Juntos.test(saludo)
 
 11. Crear una función que lea una frase y devuelva la palabra más larga que contenga, al menos, una mayúscula.
 
+```javascript
+const masLargaConMayus = (str) => {
+  const conMayus = /[a-zA-Z0-9]*[A-Z][a-zA-Z0-9]*/g
+  let misResultados = conMayus.exec(str)
+  let mayorLongitud = '';
+  while (misResultados !== null) {
+    if (misResultados[0].length >= mayorLongitud.length) {
+      mayorLongitud = misResultados[0];
+    }
+    misResultados = conMayus.exec(str)
+  }
+  return mayorLongitud;
+}
+```
+
 12. [HARDCORE Level] Obtener a partir del html de la página web de [Fictizia](https://www.fictizia.com/profesorado) los nombres y fotos de los profesores. Usar la función proporcionada para getProfesores para obtener el HTML de la web. El resultado debe ser un array de objetos. Cada objeto contendrá las propiedades `nombre` e `imagen`.
 
 Nota: Ejecutar el código en la misma web de fictizia para evitar errores de CORS.
@@ -360,11 +394,23 @@ async function getProfesores() {
 }
 const profesores = await getProfesores();
 
-// Vuestro código aquí
+const profesRegex = /<img src="(https?:\/\/www.fictizia.com\/app\/images\/[a-z-]+.[a-z]{3,4})" alt="(.+)">/g
+let misResultados = profesRegex.exec(profesores)
+const profes = [];
+while (misResultados !== null) {
+  const profe = {
+    imagen: misResultados[1],
+    nombre: misResultados[2],
+  };
+  profes.push(profe)
+  misResultados = profesRegex.exec(profesores)
+}
+
+console.log(profes)
 
 // Formato esperado
-resultado = [{
+/* resultado = [{
   nombre: 'Fran Quesada',
   imagen: 'https://www.fictizia.com/app/images/fran-quesada.jpeg',
-}]
+}] */
 ```

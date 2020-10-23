@@ -590,6 +590,7 @@ const traeDatosHeroe = (params, cb) => {
 const cbDeTraeDatosMascota = (err, datos) => {
   // Hago cosas de mascota
   traeDatosHeroe(datos, cbDeTraeDatosHeroes);
+
 }
 
 const traeDatosImagen = (params, cb) => {
