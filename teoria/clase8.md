@@ -49,7 +49,7 @@ Es un concepto abstracto que se refiere al lugar donde el código JS se evalúa 
 
 #### Pila de llamadas
 
-La pila de llamadas (o call stack) es una estructura LIFO donde se almacenan todos los contextos creados durante la ejecución del código. Al ser monohilo, JS tiene una única pila de llamadas.
+La pila de llamadas (o call stack) es una estructura LIFO (last in,first out) donde se almacenan todos los contextos creados durante la ejecución del código. Al ser monohilo, JS tiene una única pila de llamadas.
 
 #### ¿Cómo se une esto?
 
