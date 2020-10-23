@@ -12,7 +12,7 @@
 
 ### Asincronia
 
-Una de las características de JS, es que es monohilo. Esto, a nivel técnico, significa que JS sólo una cosa puede ocurrir a la vez. Es decir, JS SOLO puede procesar una sentencia cada vez en ese hilo.
+Una de las características de JS, es que es monohilo. Esto, a nivel técnico, significa que en JS sólo una cosa puede ocurrir a la vez. Es decir, JS SOLO puede procesar una sentencia cada vez en ese hilo.
 
 Esto tiene sus ventajas y desventajas, ya que si bien no tienes que preocuparte de la concurrencia, hay ciertas acciones (llamadas http, procesamiento de imágenes, etc) que necesitan de más tiempo para procesarse y, por tanto, bloquean este hilo. Para que esto no sea un bloqueo, se utilizan cierto mecanismos de asincronía (callbacks, promises, async/await) que permiten desbloquear el hilo de ejecución.
 
