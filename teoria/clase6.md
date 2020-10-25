@@ -116,6 +116,7 @@ const arrayHeroes = [...setHeroes]
 ### Map
 
 Map es otra de las incorporaciones de ES6. Un Map es como un Objeto de JS, pero con algunas diferencias:
+
 - Las claves en objetos pueden ser números, strings o simbolos mientras que en un Map las claves pueden ser cualquier cosa.
 
 ```javascript
@@ -564,9 +565,74 @@ Tened en cuenta que los proxies en términos de rendimiento son pésimos.
 
 3. Que pesado Aquaman. No sabemos cómo hacer para que tranquilos a los miembros de la Liga de la Justica. Ha comenzado a entrar usando variaciones de su nombre: aQuaman, AQUAMAN, aquaman... Crear un listado de heroes `heroes` que lance una excepción cada vez que intenten añadir a dicho array cualquier variación de 'Aquaman'.
 
+```javascript
+const supers = ["superman", "batman"];
+
+const manejador = {
+  set: (objeto, propiedad, valor) => {
+    if (propiedad !== 'length' && valor.toLowerCase().trim() === 'aquaman') {
+      throw new Error('Largo de aquí');
+    }
+    return Reflect.set(objeto, propiedad, valor)
+  }
+}
+
+const heroesDeVerdad = new Proxy(supers, manejador)
+
+```
+
 4. Nuestro carrito de la compra es bastante inteligente, pero no estaría mal que lo fuese aún más. Crear un metodo anade que reciba un producto y lo añada al carrito. Para ello Hay que tener en cuenta las siguientes cuestiones:
 
 - si un producto ya existe en el carrito hay que aumentar la cantidad, no duplicarlo.
 - Si el precio del nuevo producto es menor, será este el que predomine.
 - La cantidad por defecto será 1, pero si hubiera más habrá que sumarlos.
 - Hay que validar los tipos, el nombre del producto es un string, la cantidad es un entero y el precio es un número. En caso de que se introduzca un producto con un tipo inválido se debe lanzar una excepción.
+
+
+```javascript
+const carrito = {
+  productos: [{
+    nombre: 'papel higienico',
+    unidades: 4,
+    precio: 5,
+  },
+  {
+    nombre: 'chocolate',
+    unidades: 2,
+    precio: 1.5
+  }],
+  get precioTotal() {
+    let precio = 0;
+    for (let i = 0; i < this.productos.length; i++) {
+      precio += this.productos[i].unidades * this.productos[i].precio;
+    }
+    return precio;
+  },
+  anade(producto) {
+    const { nombre, unidades = 1, precio } = producto
+    if (typeof nombre !== 'string') {
+      throw new Error('nombre debe ser un string');
+    }
+    if (typeof precio !== 'number') {
+      throw new Error('precio debe ser un número');
+    }
+    if (!Number.isInteger(unidades)) {
+      throw new Error('unidades debe ser un entero');
+    }
+    const encontrado = this.productos.findIndex(producto => producto.nombre === nombre.toLowerCase().trim());
+    if (encontrado) {
+      const producto = this.productos[encontrado]
+      producto.unidades += unidades;
+      if (producto.precio > precio) {
+        producto.precio = precio;
+      }
+    } else {
+      this.productos.push({
+        ...producto,
+        nombre: nombre.toLowerCase().trim()
+      })
+    }
+  }
+}
+
+```
