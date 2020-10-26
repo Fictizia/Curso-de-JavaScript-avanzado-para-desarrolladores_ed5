@@ -7,9 +7,6 @@
 - Asincronía en JS
   - Promesas
   - Async/await
-  - Comunicación HTTP
-    - JSON
-    - CORS
 
 ### Promesas
 

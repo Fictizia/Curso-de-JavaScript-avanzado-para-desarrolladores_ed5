@@ -8,7 +8,6 @@
   * Como funciona
   * Event
   * Callbacks
-  * Promesas
 
 ### Asincronia
 

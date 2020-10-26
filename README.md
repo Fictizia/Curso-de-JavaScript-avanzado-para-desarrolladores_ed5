@@ -33,3 +33,7 @@ Para asegurarnos de que los alumnos disponen del nivel suficiente de JS que les 
 | Clase 5 | [Clase 5](teoria/clase5.md) | Tipos en Javascript 3: function y Derivados de Object 1: arrays |
 | Clase 6 | [Clase 6](teoria/clase6.md) | Derivados de Object 2: Set, Map, Date, Proxy & Reflec |
 | Clase 7 | [Clase 7](teoria/clase7.md) | Derivados de Object: Modulos y Regexp |
+| Clase 8 | [Clase 8](teoria/clase8.md) | JS Asíncrono: Como funciona, eventos y callbacks |
+| Clase 9 | [Clase 9](teoria/clase9.md) | JS Asíncrono: Promesas y async/await |
+| Clase 10 | [Clase 10](teoria/clase10.md) | JS Asíncrono: Comunicación HTTP y generadores |
+| Clase 11 | [Clase 11](teoria/clase11.md) | Paradigmas de programación: Orientado a Objetos y funcional |

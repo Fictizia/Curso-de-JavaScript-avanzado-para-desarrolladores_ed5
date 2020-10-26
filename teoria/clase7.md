@@ -295,7 +295,7 @@ entre3Y4Juntos.test(saludo)
 8. Crear una expresión regular que valide que un DNI/NIE tiene formato válido. Un DNI se compone de 8 números seguidos de una letra mayúscula. Un NIE se compone de un primer caracter que puede ser X,Y o Z seguido de 7 números y acaba en una letra mayúscula. Puede llevar o no un guión antes de la última letra.
 
 ```javascript
-function isNie(str) {
+function esNieODni(str) {
 
 }
 ```
@@ -357,6 +357,10 @@ function isNie(str) {
 
 9. Crear una función que valide que una URL es correcta. Vamos a asumir que las urls pueden contener caracteres alfanuméricos, guiones y puntos.
 
+```javascript
+
+```
+
 10. Crear una función que valide que el formato de una contraseña es válido. Un contraseña debe contener:
 
 - Entre 8 y 16 caracteres
@@ -364,6 +368,10 @@ function isNie(str) {
 - Al menos una letra mayúscula
 - Al menos un número
 - Puede contener símbolos no alfanuméricos.
+
+```javascript
+
+```
 
 11. Crear una función que lea una frase y devuelva la palabra más larga que contenga, al menos, una mayúscula.
 
