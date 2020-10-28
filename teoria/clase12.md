@@ -31,7 +31,7 @@ En resumen:
 - Estandarizan el diseño de sistemas software.
 - Facilitan el aprendizaje.
 
-## Categorías
+## Categorías
 
 - Patrones de arquitectura: Reflejan la organización de un sistema software a nivel estructural. Ejemplo de esto serían: `Modelo Vista Controlador`, `Arquitectura de microservicios`, `Programación por capas`, etc
 - Patrones de diseño: Relacionados intrínsecamente con las estructuras de diseño de los sistemas software. `Abstract Factory`, `Mediator`, `Singleton`, etc
