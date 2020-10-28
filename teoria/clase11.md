@@ -58,12 +58,12 @@ Uno de los pilares de la Programación Orientada a Objetos son los llamados prin
 
 - Principio de responsabilidad única: Una entidad debe tener una única responsabilidad.
 - Principio de abierto/cerrado: Las entidades de softwares deben estar abiertas a extensiones pero cerradas a su modificación.
-- Principio de sustitución de Liskox: Si en un sistema modificamos una clase por otra que herede de ella, la funcionalidad no debe verse comprometida.
+- Principio de sustitución de Liskov: Si en un sistema modificamos una clase por otra que herede de ella, la funcionalidad no debe verse comprometida.
 - Principio de segregación: Es mejor hacer muchas piezas pequeñas que se comuniquen entre si que hacer una sola que contenga todo el sistema.
 - Principio de Inversión de dependencias: Este principio nos dice que las dependencias que debemos tener en nuestro código deben ser con abstracciones, no con implementaciones.
 
 ### POO en JS
-
+¡
 Si bien JavaScript se vende como un lenguaje orientado a Objetos, la realidad es que no es así. Javascript pertenece a una vertiente de este paradigma llamada Programación orientada a Prototipos. Las principales características de los prototipos son:
 
 - Los prototipos son mutables en tiempo de ejecución.

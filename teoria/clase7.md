@@ -295,8 +295,20 @@ entre3Y4Juntos.test(saludo)
 8. Crear una expresión regular que valide que un DNI/NIE tiene formato válido. Un DNI se compone de 8 números seguidos de una letra mayúscula. Un NIE se compone de un primer caracter que puede ser X,Y o Z seguido de 7 números y acaba en una letra mayúscula. Puede llevar o no un guión antes de la última letra.
 
 ```javascript
-function esNieODni(str) {
+function esNie(str) {
+  return /[XYZ]\d{7}-?[A-Z]/.test(str);
+}
 
+function esDNI(str) {
+  return /\d{8}-?[A-Z]/.test(str);
+}
+
+function esNieODni(str) {
+  return esNie(str) || esDNI(str);
+}
+
+function esNieODni2(str) {
+  return /[XYZ\d]\d{7}-?[A-Z]/.test(str);
 }
 ```
 
@@ -359,6 +371,9 @@ function esNieODni(str) {
 
 ```javascript
 
+function esURL(str) {
+  return /^https?:\/\/(w{3}.)?[\w\.-]+\.[a-z]{2,4}$/i.test(str);
+}
 ```
 
 10. Crear una función que valide que el formato de una contraseña es válido. Un contraseña debe contener:
@@ -370,6 +385,21 @@ function esNieODni(str) {
 - Puede contener símbolos no alfanuméricos.
 
 ```javascript
+
+function tieneMinus(str) {
+  return /[a-z]/.test(str)
+}
+
+function esContrasenia2(str) {
+  return /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8})$/.test(str);
+}
+
+function esContrasenia(str) {
+  if (str.length < 8 || str.length > 16) {
+    return false;
+  }
+  return tieneMinus(str) && /[A-Z]/.test(str) && [0-9].test(str));
+}
 
 ```
 
