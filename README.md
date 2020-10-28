@@ -37,3 +37,4 @@ Para asegurarnos de que los alumnos disponen del nivel suficiente de JS que les 
 | Clase 9 | [Clase 9](teoria/clase9.md) | JS Asíncrono: Promesas y async/await |
 | Clase 10 | [Clase 10](teoria/clase10.md) | JS Asíncrono: Comunicación HTTP y generadores |
 | Clase 11 | [Clase 11](teoria/clase11.md) | Paradigmas de programación: Orientado a Objetos y funcional |
+| Clase 12 | [Clase 12](teoria/clase12.md) | Patrones de Diseño |
