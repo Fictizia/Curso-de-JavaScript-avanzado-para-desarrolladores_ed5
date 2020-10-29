@@ -2,7 +2,7 @@
 
 # [Curso de JavaScript avanzado para desarrolladores](https://fictizia.com/formacion/curso-javascript-avanzado)
 
-## Clase 15
+## Clase 12
 
 - Patrones en JS
   - Factory Method
