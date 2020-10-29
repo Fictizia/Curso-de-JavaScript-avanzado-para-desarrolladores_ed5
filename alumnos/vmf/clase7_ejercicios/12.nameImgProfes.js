@@ -13,22 +13,16 @@ async function getProfesores() {
 }
 const profesores = await getProfesores();
 
-// Vuestro código aquí.. pruebas pruebas
-// const srcRegex = /<img.*?src="(.*?)".*?alt="(.*?)">/;
-// const altRegex = /<img alt=\\"(http[^"]*)\\".*/;
-// const srcRegex = profesores.match(/<img.*?src="(.*?)".*?alt="(.*?)">/)
-// const altRegex = profesores.match(/<img alt=\\"(http[^"]*)\\".*/)
-
-const infoMatch = profesores.match(/<img.*?src="(.*?)".*?alt="(.*?)">/)
+const infoMatch = profesores.match(/<img.*?src="(.*?)".*?alt="(.*?)">/g)
 
 function infoProfes(info) {
-    return [{
-        nombre: info[1],
-        imagen: info[2]
-    }]
+    let profesResult = [];
+    while (info !== null) {
+        profesResult.push(
+        {'name': info[1],
+        'imagen': info[2]});
+        info = /<img.*?src="(.*?)".*?alt="(.*?)">/.exec(profesores);
+    }
 }
 
 infoProfes(infoMatch);
-
-// Solo he conseguido el primero...
-// mi intención era utilizar un reduce para hacer esto, pero primero tengo que obtener el listado de nombre e imagen de profes!
