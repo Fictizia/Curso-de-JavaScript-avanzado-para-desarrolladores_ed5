@@ -124,7 +124,7 @@ El mayor representante de este patrón es la librería Redux. No obstante, esta 
 
 ## Antipatrones
 
-![Ciclo de desarrollo software](../assets/clase14/ciclo-de-software.png)
+![Ciclo de desarrollo software](../assets/clase14/ciclo-de-software.jpeg)
 
 Si bien los patrones nos dan un catálogo de soluciones para ciertos problemas comunes, los antipatrones nos señalan malas soluciones que debemos evitar a la hora de construir software. Los antipatrones reflejan errores de todo el proceso de desarrollo software, desde gestión hasta la parte más puramente técnica.
 
