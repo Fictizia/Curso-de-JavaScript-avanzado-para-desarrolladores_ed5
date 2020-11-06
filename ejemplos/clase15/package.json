@@ -1,0 +1,23 @@
+{
+    "name": "javascript-avanzado",
+    "version": "1.0.0",
+    "description": "![WideImg](http://fictizia.com/img/github/Fictizia-plan-estudios-github.jpg)",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Fictizia/Curso-de-JavaScript-avanzado-para-desarrolladores_ed4.git"
+    },
+    "author": "Fran Quesada",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Fictizia/Curso-de-JavaScript-avanzado-para-desarrolladores_ed4/issues"
+    },
+    "homepage": "https://github.com/Fictizia/Curso-de-JavaScript-avanzado-para-desarrolladores_ed4#readme",
+    "devDependencies": {
+        "jest": "^26.0.1"
+    },
+    "dependencies": {}
+}
