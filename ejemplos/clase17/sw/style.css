@@ -1,0 +1,100 @@
+h1,
+p {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.is-center {
+    text-align: center;
+}
+
+.card-list-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.card-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.card-item {
+    display: flex;
+    margin: 4px 0;
+    padding: 12px 8px;
+    max-width: 320px;
+    height: 120px;
+    border: 1px solid #cccccc;
+}
+
+.card-image {
+    width: 80px;
+    height: 120px;
+    border-radius: 2%;
+}
+
+.card-content {
+    margin: 0 16px;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.card-item-content {
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    padding-top: 75px;
+}
+
+.search-container {
+    width: 490px;
+    display: block;
+    margin: 0 auto;
+}
+
+input.search-bar {
+    margin: 0 auto;
+    width: 100%;
+    height: 45px;
+    padding: 0 20px;
+    font-size: 1rem;
+    border: 1px solid #D0CFCE;
+    outline: none;
+}
+
+input.search-bar:focus {
+    border: 1px solid #008ABF;
+    transition: 0.35s ease;
+    color: #008ABF;
+}
+
+input.search-bar:focus::-webkit-input-placeholder {
+    transition: opacity 0.45s ease;
+    opacity: 0;
+}
+
+input.search-bar:focus::-moz-placeholder {
+    transition: opacity 0.45s ease;
+    opacity: 0;
+}
+
+input.search-bar:focus:-ms-placeholder {
+    transition: opacity 0.45s ease;
+    opacity: 0;
+}
+
+.search-icon {
+    position: relative;
+    float: right;
+    width: 75px;
+    height: 75px;
+    top: -62px;
+    right: -45px;
+}

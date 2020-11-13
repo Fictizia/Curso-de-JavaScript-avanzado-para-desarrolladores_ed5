@@ -1,1 +1,3 @@
 **/private
+.env
+node_modules

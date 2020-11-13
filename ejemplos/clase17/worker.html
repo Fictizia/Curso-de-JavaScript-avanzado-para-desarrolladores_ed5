@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style rel="stylesheet">
+        h1,
+        p {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .is-center {
+            text-align: center;
+        }
+
+        .card-list-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .card-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .card-item {
+            display: flex;
+            margin: 4px 0;
+            padding: 12px 8px;
+            max-width: 320px;
+            height: 120px;
+            border: 1px solid #cccccc;
+        }
+
+        .card-image {
+            width: 80px;
+            height: 120px;
+            border-radius: 2%;
+        }
+
+        .card-content {
+            margin: 0 16px;
+        }
+
+        .card-title {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .card-item-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+            padding-top: 75px;
+        }
+
+        .search-container {
+            width: 490px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        input.search-bar {
+            margin: 0 auto;
+            width: 100%;
+            height: 45px;
+            padding: 0 20px;
+            font-size: 1rem;
+            border: 1px solid #D0CFCE;
+            outline: none;
+        }
+
+        input.search-bar:focus {
+            border: 1px solid #008ABF;
+            transition: 0.35s ease;
+            color: #008ABF;
+        }
+
+        input.search-bar:focus::-webkit-input-placeholder {
+            transition: opacity 0.45s ease;
+            opacity: 0;
+        }
+
+        input.search-bar:focus::-moz-placeholder {
+            transition: opacity 0.45s ease;
+            opacity: 0;
+        }
+
+        input.search-bar:focus:-ms-placeholder {
+            transition: opacity 0.45s ease;
+            opacity: 0;
+        }
+
+        .search-icon {
+            position: relative;
+            float: right;
+            width: 75px;
+            height: 75px;
+            top: -62px;
+            right: -45px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="is-center">Heroes</h1>
+
+    <form class="search-container" id="heroForm">
+        <input type="text" id="heroInput" class="search-bar" placeholder="¿Qué quieres buscar? ">
+        <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
+    </form>
+
+    <p id="contador"></p>
+    <button id="comenzar">Comenzar cuenta</button>
+    <button id="terminator">Parar cuenta</button>
+
+    <div class="card-list-wrapper">
+        <ul id="superHeroList" class="card-list ">
+        </ul>
+    </div>
+
+    <script>
+        const contador = document.getElementById('contador');
+        const comenzar = document.getElementById('comenzar')
+        const terminator = document.getElementById('terminator')
+        let worker;
+
+        const creaWorker = () => {
+            if (Worker) {
+                if (!worker) {
+                    worker = new Worker('./js/worker.js')
+                    worker.addEventListener('message', (event) => {
+                        console.log(event)
+                        contador.innerText = event.data;
+                    })
+                    worker.addEventListener('error', (event) => {
+                        console.log(event)
+                        contador.innerText = event.message
+                    })
+                    worker.postMessage('Empieza')
+                }
+            } else {
+                contador.innerText = 'Aquí no funcionan los workers'
+            }
+        }
+        comenzar.addEventListener('click', (e) => {
+            e.preventDefault()
+            creaWorker()
+        })
+
+        terminator.addEventListener('click', (e) => {
+            e.preventDefault()
+            if (worker) {
+                worker.terminate();
+                worker = undefined
+            }
+        })
+    </script>
+
+    <script>
+        const input = document.getElementById('heroInput')
+        const list = document.getElementById('superHeroList')
+        const form = document.getElementById('heroForm')
+        const createListElement = ({
+            nombre,
+            heroe,
+            imagen,
+            genero,
+        }) => {
+            const listItem = document.createElement('li')
+            listItem.classList.add('card-item')
+            const cardImage = document.createElement('img')
+            cardImage.classList.add('card-image')
+            cardImage.src = imagen
+            listItem.append(cardImage)
+            const cardContent = document.createElement('div')
+            cardContent.classList.add('card-content')
+            listItem.append(cardContent)
+            const cardTitle = document.createElement('p')
+            cardTitle.classList.add('card-title')
+            cardTitle.innerText = heroe
+            cardContent.appendChild(cardTitle)
+            const cardText1 = document.createElement('p')
+            cardText1.classList.add('card-text')
+            cardText1.innerText = nombre
+            cardContent.appendChild(cardText1)
+            const cardText2 = document.createElement('p')
+            cardText2.classList.add('card-text')
+            cardText2.innerText = genero
+            cardContent.append(cardText2)
+            list.append(listItem)
+        }
+
+        const getHero = async(name) => {
+            try {
+                const respuesta = await fetch(`http://localhost:3000/search/${name}`);
+                return respuesta.json()
+            } catch (ex) {
+                alert(ex.message)
+            }
+        }
+
+        const onChange = async event => {
+            list.textContent = ''
+            const text = event.target.value
+            if (text.length < 3) {
+                return;
+            }
+            const queryResult = localStorage.getItem(text)
+            let bats
+            if (queryResult) {
+                console.log('Obtenido del storage')
+                bats = JSON.parse(queryResult)
+            } else {
+                console.log('Obtenido de la API Web')
+                bats = await getHero(text)
+                if (bats) {
+                    localStorage.setItem(text, JSON.stringify(bats))
+                }
+            }
+            bats.results.forEach(el => {
+                nombre: el.biography['full-name'],
+                createListElement({
+                    heroe: el.name,
+                    nombre: el.biography['full-name'],
+                    genero: el.appearance.gender,
+                    imagen: el.image.url,
+                })
+            })
+        }
+
+        input.addEventListener('submit', e => e.preventDefault())
+
+        input.addEventListener('change', onChange)
+    </script>
+</body>
+
+</html

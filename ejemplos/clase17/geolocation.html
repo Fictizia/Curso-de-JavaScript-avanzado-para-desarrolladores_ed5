@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Donde ando</title>
+</head>
+
+<body>
+    <h1>No me encuentro</h1>
+    <button id="miBoton">¿Donde estoy?</button>
+    <p id="location"></p>
+
+    <script>
+        const boton = document.getElementById('miBoton')
+        const getLocalizacion = () => {
+            if ('geolocation' in navigator) {
+                const opciones = {
+                    timeout: Infinity,
+                    maximumAge: 0,
+                    enableHighAccuracy: true
+                }
+
+                navigator.geolocation.getCurrentPosition(todoHaSalidoAPedirDeMilhouse, muestraError, opciones);
+
+            } else { // Not supported
+                alert("Uy! A este navegador le falta un poco de cocción.");
+            }
+        }
+
+        const todoHaSalidoAPedirDeMilhouse = ({
+            coords,
+            timestamp
+        }) => {
+            console.log('Estas aparecen siempre')
+            console.log(coords.latitude);
+            console.log(coords.longitude);
+            console.log(coords.accuracy);
+            console.log('Estas sólo aparecen si están disponibles')
+            console.log(coords.altitude)
+            console.log(coords.altitudeAccuracy)
+            console.log(coords.heading)
+            console.log(coords.speed)
+            console.log(timestamp)
+        }
+
+        const muestraError = (error) => {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("No te doy permiso y.")
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("No consigo encontrarte.")
+                    break;
+                case error.TIMEOUT:
+                    alert("No puedo pasarme la vida buscándote.")
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("No sé qué pasa.")
+                    break;
+            }
+        }
+
+        boton.addEventListener('click', getLocalizacion)
+    </script>
+</body>
+
+</html>

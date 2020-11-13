@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 11</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style rel="stylesheet">
+        h1,
+        p {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .is-center {
+            text-align: center;
+        }
+
+        .card-list-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .card-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .card-item {
+            display: flex;
+            margin: 4px 0;
+            padding: 12px 8px;
+            max-width: 320px;
+            height: 120px;
+            border: 1px solid #cccccc;
+        }
+
+        .card-image {
+            width: 80px;
+            height: 120px;
+            border-radius: 2%;
+        }
+
+        .card-content {
+            margin: 0 16px;
+        }
+
+        .card-title {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .card-item-content {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="is-center">Heroes</h1>
+    <div class="card-list-wrapper">
+        <ul id="superHeroList" class="card-list ">
+        </ul>
+    </div>
+
+    <script>
+        let i = 0;
+        while (i < Number.MAX_SAFE_INTEGER) {
+            i++;
+        }
+    </script>
+
+    <script>
+        const input = document.getElementById('heroInput')
+        const list = document.getElementById('superHeroList')
+        const form = document.getElementById('heroForm')
+        const createListElement = ({
+            nombre,
+            heroe,
+            imagen,
+            genero,
+        }) => {
+            const listItem = document.createElement('li')
+            listItem.classList.add('card-item')
+            const cardImage = document.createElement('img')
+            cardImage.classList.add('card-image')
+            cardImage.src = imagen
+            listItem.append(cardImage)
+            const cardContent = document.createElement('div')
+            cardContent.classList.add('card-content')
+            listItem.append(cardContent)
+            const cardTitle = document.createElement('p')
+            cardTitle.classList.add('card-title')
+            cardTitle.innerText = heroe
+            cardContent.appendChild(cardTitle)
+            const cardText1 = document.createElement('p')
+            cardText1.classList.add('card-text')
+            cardText1.innerText = nombre
+            cardContent.appendChild(cardText1)
+            const cardText2 = document.createElement('p')
+            cardText2.classList.add('card-text')
+            cardText2.innerText = genero
+            cardContent.append(cardText2)
+            list.append(listItem)
+        }
+
+        (async function() {
+            const data = localStorage.getItem('bats')
+            let bats
+            if (data) {
+                console.log('Obtenido del storage')
+                bats = JSON.parse(data)
+            } else {
+                console.log('Obtenido de la API Web')
+                const respuesta = await fetch('http://localhost:3000/search/bat');
+                bats = await respuesta.json()
+                localStorage.setItem('bats', JSON.stringify(bats))
+            }
+            bats.results.forEach(el => {
+                nombre: el.biography['full-name'],
+                createListElement({
+                    heroe: el.name,
+                    nombre: el.biography['full-name'],
+                    genero: el.appearance.gender,
+                    imagen: el.image.url,
+                })
+            })
+        })()
+    </script>
+</body>
+
+</html
