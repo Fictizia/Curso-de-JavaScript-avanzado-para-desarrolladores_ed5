@@ -1,0 +1,16 @@
+{
+    "name": "front",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "serve .",
+        "test": "jest .",
+        "test:e2e": "cypress run"
+    },
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "cypress": "^5.6.0"
+    }
+}
