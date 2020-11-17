@@ -7,12 +7,13 @@
 
 //cualquier otra cosa --> 300th
 
-function(num) {
-  const number = '';
+function englishNumber(n) {
+  let number = 1;
   let result = '';
   for (const number of result) {
 
   }
+  lastIndexOf('');
 }
 
 

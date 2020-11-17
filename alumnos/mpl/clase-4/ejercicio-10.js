@@ -11,18 +11,17 @@ const carrito = {
       unidades: 4,
       precio: 5,
       precioTotal: '',
-      get precio() {
-        return `${this.precioTotal}`
-      },
     },
-
     {
       nombre: 'chocolate',
       unidades: 2,
       precio: 1.5
     }
-  ]
-
+  ],
+  get precio() {
+    for ()
+      return `${this.precioTotal}`
+  },
 }
 console.log(carrito.precio);
 
