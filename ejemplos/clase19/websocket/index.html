@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Websocket ejemplo</title>
+    <style>
+        body {
+            width: 630px;
+            margin: 0 auto;
+            background-color: #002B36;
+            color: #FDF6E3;
+            font-family: 'Cousine', monospace;
+        }
+
+        h1 {
+            font-variant: small-caps;
+            letter-spacing: 2px;
+            font-size: 60px;
+        }
+
+        #btc {
+            font-size: 40px;
+            color: #859900;
+        }
+
+        #valor-cambios {
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+
+        #cambio {
+            margin-top: 4px;
+            color: #E53B27;
+        }
+
+        #venta {
+            color: #D7B836;
+        }
+        /*
+@see:http://jsfiddle.net/jonathansampson/xxuxd/
+*/
+        /* Make it a marquee */
+
+        .marquee {
+            background-color: #073642;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            animation: marquee 50s linear infinite;
+        }
+
+        .marquee:hover {
+            animation-play-state: paused
+        }
+        /* Make it move */
+
+        @keyframes marquee {
+            0% {
+                text-indent: 27.5em
+            }
+            100% {
+                text-indent: -105em
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Blockchain en tiempo real</h1>
+
+    <div id="cantidad"></div>
+    <h4>Tipos de cambio</h4>
+    <div id="valor-cambios">
+        <div id="venta" class="marquee">No hay tipos de cambio disponibles para realizar la conversión.</div>
+        <div id="cambio" class="marquee">No hay tipos de cambio disponibles para realizar la conversión.</div>
+    </div>
+    <p>Desde que te conectaste......</p>
+
+    <script>
+        // @see: https://bl.ocks.org/npedrini/6030317
+        // @converter: https://blockchain.info/es/api/exchange_rates_api
+        let tiposCambio;
+        let cantidadBitcoins = 0;
+        const objetivoCantidad = document.getElementById("cantidad");
+
+        fetch('https://blockchain.info/es/ticker?cors=true')
+            .then(res => res.json())
+            .then(res => {
+                tiposCambio = res
+            })
+            .catch(err => {
+                delete tiposCambio;
+                console.error("ERROR! AJAX!", err.message);
+            })
+
+        /*---- WEBSOCKETS ----*/
+        const blockchain = new WebSocket('wss://ws.blockchain.info/inv');
+
+        blockchain.addEventListener('error', (error) => {
+            console.log('connection.onerror', error);
+        })
+
+        blockchain.addEventListener('open', () => {
+            blockchain.send(JSON.stringify({
+                "op": "unconfirmed_sub"
+            })); //	subscribe to uncofirmed activity
+            blockchain.send(JSON.stringify({
+                "op": "blocks_sub"
+            })); //	subscribe to new blocks
+        })
+
+        blockchain.addEventListener('message', (message) => {
+            const respuesta = JSON.parse(message.data);
+            if (respuesta.op == "utx") {
+                let cantidad = 0;
+                for (let i = 0; i < respuesta.x.out.length; i += 1) {
+                    cantidad += respuesta.x.out[i].value;
+                }
+                //	amount está en Satoshi
+                //	1 BTC = 100,000,000 Satoshi (https://en.bitcoin.it/wiki/activity)
+                respuesta.amount = cantidad / 100000000;
+                cantidadBitcoins += respuesta.amount
+                let contenidoCantidad = "";
+
+                if (tiposCambio) {
+                    let contentExchange = "";
+                    let sellExchange = "";
+                    for (const moneda in tiposCambio) {
+                        contentExchange += "<strong>" + moneda + ":</strong> " + (cantidadBitcoins + tiposCambio[moneda]["sell"]).toFixed(2) + tiposCambio[moneda]["symbol"] + " | "
+                        sellExchange += "<strong>" + moneda + " (S):</strong> " + tiposCambio[moneda]["sell"] + tiposCambio[moneda]["symbol"] + " | "
+                        sellExchange += "<strong>" + moneda + " (B):</strong> " + tiposCambio[moneda]["buy"] + tiposCambio[moneda]["symbol"] + " | "
+                    }
+                    document.getElementById("venta").innerHTML = sellExchange;
+                    document.getElementById("cambio").innerHTML = contentExchange;
+                }
+                contenidoCantidad = "<p id='btc'><strong>BTC:</strong> " + cantidadBitcoins.toFixed(6) + "</p>";
+
+                objetivoCantidad.innerHTML = contenidoCantidad;
+            }
+        })
+    </script>
+</body>
+
+</html>

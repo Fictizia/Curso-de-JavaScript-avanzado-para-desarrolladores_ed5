@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .my-canvas {
+            border: 1px solid black;
+        }
+
+        .is-hidden {
+            display: none;
+        }
+
+        .my-image {
+            width: 120px;
+            height: 120px;
+        }
+
+        .is-main {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .is-input {
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="is-main">
+        <input class="is-input" type="text" id="miInput" />
+        <canvas id="miCanvas" class="my-canvas is-hidden"></canvas>
+        <img id="miImagen" class="my-image is-hidden" />
+    </main>
+    <script>
+        const canvas = document.getElementById('miCanvas');
+        const input = document.getElementById('miInput')
+        const imagen = document.getElementById('miImagen')
+
+        const generarIniciales = (nombreCompleto) => {
+            const [nombre, apellido] = nombreCompleto.trim().split(' ');
+            if (!nombre) {
+                return ''
+            }
+            if (!apellido) {
+                return nombre[0];
+            } else {
+                return `${nombre[0]}${apellido[0]}`
+            }
+        }
+
+        const creaContext = () => {
+            const context = canvas.getContext('2d');
+            canvas.width = canvas.height = 100;
+            const randomColor = '#' + (0x1000000 | (Math.random() * 0xFFFFFF)).toString(16).substr(1, 6);
+            context.fillStyle = randomColor;
+            context.beginPath();
+            context.ellipse(
+                canvas.width / 2, canvas.height / 2,
+                canvas.width / 2, canvas.height / 2,
+                0,
+                0, Math.PI * 2
+            );
+            context.fill();
+            context.font = `${canvas.height/3}px serif`;
+
+            context.fillStyle = '#ffffff';
+            context.textAlign = "center";
+            context.textBaseline = "middle";
+            return context;
+        }
+
+        const queEmpieceLaFiesta = (nombre) => {
+            const context = creaContext();
+            const iniciales = generarIniciales(nombre);
+
+
+            context.fillText(iniciales.toUpperCase(), canvas.width / 2, canvas.height / 2);
+
+            const data = canvas.toDataURL();
+            if (imagen.classList.contains('is-hidden')) {
+                imagen.classList.remove('is-hidden')
+            }
+            imagen.src = data;
+        }
+
+        const onChange = (ev) => {
+            const {
+                value
+            } = ev.target;
+            queEmpieceLaFiesta(value);
+        }
+
+        input.addEventListener('change', onChange)
+    </script>
+</body>
+
+</html>

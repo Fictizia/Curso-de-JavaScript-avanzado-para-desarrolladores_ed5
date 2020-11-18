@@ -40,4 +40,8 @@ Para asegurarnos de que los alumnos disponen del nivel suficiente de JS que les 
 | Clase 12 | [Clase 12](teoria/clase12.md) | Patrones de Diseño |
 | Clase 13 | Clase 13 | Sesión práctica |
 | Clase 14 | [Clase 14](teoria/clase14.md) | Patrones de Arquitectura y Antipatrones |
-| Clase 15 | [Clase 15](teoria/clase15.md) | Testing |
+| Clase 15 | [Clase 15](teoria/clase15.md) | Testing: Teoría |
+| Clase 16 | [Clase 16](teoria/clase16.md) | Apis de navegador: BOM & DOM, Drag & Drop, Intersection Observer, Cookies y WebStorage|
+| Clase 17 | [Clase 17](teoria/clase17.md) | Apis de navegador: Geolocalización, Workers & Service Workers y Speech |
+| Clase 18 | [Clase 18](teoria/clase18.md) | Automatización de tareas front: Npm y Yarn, análisis estático y documentación |
+| Clase 19 | [Clase 19](teoria/clase19.md) | Apis de navegador: Web Sockets, Canvas e IndexedDB |
