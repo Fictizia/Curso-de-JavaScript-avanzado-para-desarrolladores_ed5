@@ -11,7 +11,7 @@ const heroController = () => ({
             } = await getHeroes(hero)
             return res.status(200).send(search);
         } catch (ex) {
-            res.status(500).send({
+            return res.status(500).send({
                 message: ex.message
             })
         }

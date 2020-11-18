@@ -4,6 +4,7 @@ import getHeroes from "./services/search-service.js";
 import {get as getFromCache } from "./services/cache-service.js";
 
 const input = document.getElementById('heroInput')
+const submitButton = document.getElementById('submitButton')
 const list = document.getElementById('superHeroList')
 const removeZone = document.getElementById('removeZone')
 const errorContainer = document.getElementById('lo ')
