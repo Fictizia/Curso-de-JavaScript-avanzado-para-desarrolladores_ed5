@@ -2,7 +2,7 @@
 
 # [Curso de JavaScript avanzado para desarrolladores](https://fictizia.com/formacion/curso-javascript-avanzado)
 
-## Clase 18
+## Clase 19
 
 - HTML5 APIs
   - Web Sockets

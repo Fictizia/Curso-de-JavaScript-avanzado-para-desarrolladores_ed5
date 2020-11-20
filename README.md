@@ -45,3 +45,4 @@ Para asegurarnos de que los alumnos disponen del nivel suficiente de JS que les 
 | Clase 17 | [Clase 17](teoria/clase17.md) | Apis de navegador: Geolocalización, Workers & Service Workers y Speech |
 | Clase 18 | [Clase 18](teoria/clase18.md) | Automatización de tareas front: Npm y Yarn, análisis estático y documentación |
 | Clase 19 | [Clase 19](teoria/clase19.md) | Apis de navegador: Web Sockets, Canvas e IndexedDB |
+| Clase 20 | [Clase 20](teoria/clase20.md) | Gulp & Webpack y Proyectos  |

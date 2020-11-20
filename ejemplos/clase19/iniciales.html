@@ -56,7 +56,8 @@
 
         const creaContext = () => {
             const context = canvas.getContext('2d');
-            canvas.width = canvas.height = 100;
+            canvas.width = 100;
+            canvas.height = 100;
             const randomColor = '#' + (0x1000000 | (Math.random() * 0xFFFFFF)).toString(16).substr(1, 6);
             context.fillStyle = randomColor;
             context.beginPath();
