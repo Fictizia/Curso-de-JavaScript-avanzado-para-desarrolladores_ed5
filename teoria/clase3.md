@@ -66,7 +66,7 @@ const miNumeroBinario = 0b01111111100000000000000000000000 // 0b indica que es b
 const miNumeroHexadecimal = 0xA // 0x indica que es Hexadecimal
 ```
 
-##### Métodos:
+#####Métodos:
 
 * `.toExponential(n)` Devuelve un string con el valor numérico redondeado a n decimales en coma flotante.
 
@@ -514,7 +514,7 @@ console.assert(camelize("Hola a todos que tal") === "holaATodosQueTal");
 - cualquier otra cosa --> `300th`
 
 ```javascript
-function(num) {
+function englishFormat(num) {
   const lastNumber = num % 10
   switch(lastNumer) {
     case 1:

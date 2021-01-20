@@ -75,6 +75,16 @@ const objeto = {
 
 objeto.propiedad2 = 'Esta es una propiedad nueva'
 objeto.propiedad1 = 'Esta propiedad la modifico'
+
+// Lo que no puedo hacer es lo siguiente:
+const peligro = {
+  propiedad1: 'Esta es mi propiedad original'
+}
+
+peligro = {
+    prohibido: 'Esto no lo puedo hacer'
+}
+
 ```
 
 Podemos usar el [rest operator](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Funciones/parametros_rest) para componer objetos:
@@ -369,14 +379,14 @@ const carrito = {
 
 * `nombre`: Nombre del libro
 * `autor`: Nombre de quien lo ha escrito
-* `leido`: Un boleano que nos indica si hemos leído o no el libro
+* `leido`: Un booleano que nos indica si hemos leído o no el libro
 
 Nuestra estantería necesita las siguientes funcionalidades:
 
 * Un método log que imprima por cada libro su nombre, autor y si lo has leído o no con el siguiente formato:
   * Si no lo has leído: `Aun no has leído El Quijote de Miguel de Cervantes`
   * Si lo has leído: `Ya has leído El Quijote de Miguel de Cervantes`
-* Un método sugerencia que te devuelva de forma aletoria un el nombre de un libro y su autor que no hayas leído.
+* Un método sugerencia que te devuelva de forma aleatoria el nombre de un libro y su autor que no hayas leído.
 
 Implementar los métodos log y sugerencia del objeto estantería.
 
@@ -435,7 +445,7 @@ ${prefijo} leído ${libro.nombre} de ${libro.autor}`
 
 ### Function
 
-Cuando Brendan Eich creó JS, una de las ideas claves del lenguajes es que las funciones tenían que ser de primera clase. Esto significa que se pueden tratar como si fueran cualquier otro tipo de variable, es decir, en JS podemos:
+Cuando Brendan Eich creó JS, una de las ideas claves del lenguaje es que las funciones tenían que ser de primera clase. Esto significa que se pueden tratar como si fueran cualquier otro tipo de variable, es decir, en JS podemos:
 - Guardar funciones en variables, objetos o arrays
 - Pasarlas como argumento de otras funciones
 - Devolverlas desde otras funciones
@@ -588,7 +598,7 @@ const sumaEnVariasLineas = (num1, num2) => {
 }
 ```
 
-#### Parametros
+#### Parámetros
 
 * Valor por defecto: Cuando declaramos los parámetros de una función, podemos definir un valor por defecto:
 
@@ -769,7 +779,7 @@ console.log(creaBruce('Javier'))
 Si combinamos las funciones auto ejecutadas y los closures podemos hacer cosas como las siguientes:
 
 ```javascript
-const contador = (function() {
+const contador = (function(){
   var _contador = 0;
   return {
     anade: function() {

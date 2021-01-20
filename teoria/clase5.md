@@ -145,7 +145,7 @@ function saludos(nombre) {
 }
 ```
 
-Esto es porque las variables se "declaran" aun más "arriba" que las funciones:
+Esto es porque las variables se "declaran" aún más "arriba" que las funciones:
 
 ```javascript
 function saludos(nombre) {
@@ -161,7 +161,7 @@ Como ya hemos visto, en JS casi todo es, de una forma u de otra, un objeto. Por 
 
 ### Array
 
-Un array en JS es, basicamente, un listado de cosas. Es un iterable, es decir, se puede recorrer con for...of. Su contenido puede ser de cualquier tipo, object, function, string,... no importa el tipo. Los elementos de un array pueden estar repetidos.
+Un array en JS es un listado de cosas. Es un iterable, es decir, se puede recorrer con for...of. Su contenido puede ser de cualquier tipo, object, function, string,... no importa el tipo. Los elementos de un array pueden estar repetidos.
 
 #### Declaración
 
@@ -260,6 +260,7 @@ const miOtroArray = miArray
 
 miOtroArray[0] = 'EsteEs el primer elemento'
 console.assert(miOtroArray[0] === miArray[0])
+
 ```
 
 Podemos usar el [spread operator](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Spread_operator) para componer arrays:
@@ -314,7 +315,7 @@ const miNuevoArray = Array.of(8) // [8]
 const miOtroArray = Array.of('batman', 'superman', 'wonderwoman')
 ```
 
-##### Metodos que mutan
+##### Métodos que mutan
 
 * `.pop()`: Borra el último elemento de una matriz y lo devuelve
 
@@ -453,7 +454,7 @@ const indiceDeSuperman = heroes.includes('superman') // true
 const indiceDeFlash = heroes.includes('flash') // false
 ```
 
-##### Metodos de repetición
+##### Métodos de repetición
 
 Estos métodos llegaron con ES6. Todos estos métodos reciben una función que se ejecuta por cada elemento del array.
 

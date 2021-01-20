@@ -10,16 +10,16 @@
 
 ## Paradigmas de programación
 
-Una de las características de JS es que es multi-paradigma, desde imperativo hasta orientado a objetos. El paradigma con el que trabajamos marcará nuestro estilo de programación y la estrutura del proyecto. Un paradigma de programación refleja un enfoque o una filosofía para crear las soluciones durante un periodo de tiempo. Historicamente, hemos podido observar el surgimiento y aceptación de distintos paradigmas de programación.
+Una de las características de JS es que es multi-paradigma, desde imperativo hasta orientado a objetos. El paradigma con el que trabajamos marcará nuestro estilo de programación y la estructura del proyecto. Un paradigma de programación refleja un enfoque o una filosofía para crear las soluciones durante un periodo de tiempo. Historicamente, hemos podido observar el surgimiento y aceptación de distintos paradigmas de programación.
 
 - Programación imperativa o procedural: La más antigua y más extendida. Se basa en dar instrucciones a los sistemas en forma de algoritmos.
-- Programación orientada a objetos: Deriva de la imperativa. La principal diferencia es que en esta se abstraen conceptos de la realidad en un estructura de datos llamada objeto que contiene variables y funciones.
+- Programación orientada a objetos: Deriva de la imperativa. La principal diferencia es que en esta se abstraen conceptos de la realidad en una estructura de datos llamada objeto que contiene propiedades y métodos.
 - Programación orientada a eventos: Se basa en la idea de que en el sistema ocurrirán ciertos eventos que este deberá manejar. El cuando ocurran dichos eventos escapa al control del programador.
 - Programación funcional: En este paradigma, las funciones son ciudadanos de primer orden. En vez de centrarnos en el cómo hacemos la solución, nos centraremos en qué estamos haciendo alejándonos de controles de flujo y de mutabilidad en variables.
-- Programación reactiva:  Es un paradigma de programación orientado al manejo de flujos de datos asíncronos optimizando al máximo el uso de recursos. Uno de los ejes centrales de este paradigma es el uso de publicadores y suscriptores de eventos asíncronos. La comunicación entre componentes se lleva a cabo mediante mensajes.
-- Programación multiparadigma: Es el uso de dos o más paradigmas en un programa.
+- Programación reactiva: Es un paradigma de programación orientado al manejo de flujos de datos asíncronos optimizando al máximo el uso de recursos. Uno de los ejes centrales de este paradigma es el uso de publicadores y suscriptores de eventos asíncronos. La comunicación entre componentes se lleva a cabo mediante mensajes.
+- Programación multi paradigma: Es el uso de dos o más paradigmas en un programa.
 
-### Programación orientada a objetos
+###Programación orientada a objetos
 
 Como ya hemos dicho, en este paradigma llevaremos a código entidades de la realidad en forma de objetos. En este paradigma existe ciertos términos que siempre hay que tener presentes:
 
@@ -38,12 +38,16 @@ const carrito = {
   productos: [],
   precioTotal: 0,
   anade() { },
-  elimina () { },
+  elimina () {
+
+  },
 
   // las siguientes propiedades y métodos si bien pueden reflejar la realidad, no tendrán mucha utilidad en nuestro sistema
   tieneMoneda: false,
   ninos: [],
-  avanza(){ },
+  avanza(){
+
+  },
   meteTurbo() { },
 }
 ```
@@ -63,7 +67,7 @@ Uno de los pilares de la Programación Orientada a Objetos son los llamados prin
 - Principio de Inversión de dependencias: Este principio nos dice que las dependencias que debemos tener en nuestro código deben ser con abstracciones, no con implementaciones.
 
 ### POO en JS
-¡
+
 Si bien JavaScript se vende como un lenguaje orientado a Objetos, la realidad es que no es así. Javascript pertenece a una vertiente de este paradigma llamada Programación orientada a Prototipos. Las principales características de los prototipos son:
 
 - Los prototipos son mutables en tiempo de ejecución.
@@ -90,7 +94,7 @@ En el caso de los objetos de JS, esta propiedad es 'privada', pero podemos acced
 
 ```javascript
 Object.getPrototypeOf({})
-Object.getPrototypeOf([]])
+Object.getPrototypeOf([])
 Object.getPrototypeOf(new Date())
 ```
 
@@ -154,7 +158,7 @@ function Personaje(nombre, nivel) {
   this.nombre = nombre
   this.nivel = nivel
 
-  saluda() {
+  this.saluda = function() {
     console.log(`Creador, ${this.nombre} te saluda.`)
   }
 }
@@ -168,7 +172,7 @@ Para crear instancias de las Clases que definamos, usaremos el operador `new`
 const heroe = new Personaje('Batman', 100)
 ```
 
-Si quisieramos, podríamos modificar el esta clase en tiempo de ejecución usando los prototipos como previamente hemos visto:
+Si quisieramos, podríamos modificar esta clase en tiempo de ejecución usando los prototipos como previamente hemos visto:
 
 ```javascript
 
@@ -379,13 +383,13 @@ Además, hay que tener en cuenta que JS es un lenguaje de tipado débil, lo cual
   }
 ```
 
-### Librerías
+### Librerías
 
 - [typescript](https://www.typescriptlang.org/)
 - [lodash](https://lodash.com/)
 - [ramda](https://ramdajs.com/)
 
-### Recursos
+### Recursos
 
 - [Operaciones más comunes en Programación funcional](https://medium.com/dailyjs/functional-js-with-es6-recursive-patterns-b7d0813ef9e3)
 - [La historia perdida de la programación orientada a objetos: Solo existe uno](https://www.youtube.com/watch?v=2AJ6VJ4Xstc&t=427s&ab_channel=HolaMundo)

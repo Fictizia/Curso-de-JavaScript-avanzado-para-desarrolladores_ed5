@@ -443,7 +443,7 @@ throw 42;
 throw {};
 ```
 
-#### try...catch
+#### try...catch
 Para capturalas y manejarlas usaremos try...catch. Si hay un `try`, siempre debe ir acompañado de `catch`, `finally` o ambos.
 
 ```javascript
@@ -634,5 +634,4 @@ const carrito = {
     }
   }
 }
-
 ```

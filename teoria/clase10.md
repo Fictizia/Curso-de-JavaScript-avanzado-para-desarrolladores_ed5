@@ -16,7 +16,7 @@
 
 HTTP (Hypertext transfer protocol) es el protocolo de comunicaciones más extendido en la web. Se basa en una estructura cliente-servidor en la que siempre hay alguien solicitando recursos y otro alguien esperando para atender las solicitudes del primero.
 
-![Client-server flow](../assets/clase10/client-server.png)
+![Client-server flow](../../master-web-1/assets/clase11/client-server.png)
 
 Algunas características de HTTP son:
 
@@ -126,7 +126,7 @@ Cross-Origin Resource Sharing es un mecanismo para controlar qué recursos y có
   - Accept
   - Accept-Language
   - Content-Language
-  - Content-Type: Esta sólo puede valer `application/x-www-form-urlencoded`, `multipart/form-data` o `text/plain`.
+  - Content-Type: Esta solo puede valer `application/x-www-form-urlencoded`, `multipart/form-data` o `text/plain`.
   - DPR
   - Dowlink
   - Save-Data
@@ -145,11 +145,11 @@ Si nuestra petición se sale de estos parámetros, el navegador realizará una p
 
 AJAX es cómo se conoce a la técnica de desarrollo de web consistente en modificar el contenido de las webs sin necesidad de recargar las páginas. Consiste en usar los recursos que ya existen en el navegador (JS Asíncrono y XML) para solicitar recursos al servidor en segundo plano.
 
-### XMLHttpRequest
+### XMLHttpRequest
 
 Esta técnica se basa en el objeto `XMLHttpRequest` que contienen los navegadores. Dicho objeto no sirve sólo para XML, vale para cualquier tipo de dato.
 
-#### Declaración
+#### Declaración
 
 Para crear una nueva instancia de XMLHttpRequest usaremos el constructor de su clase. Este no recibe ningún parámetro.
 
@@ -286,7 +286,7 @@ Estas son algunas de las propiedades más importantes de Request.
 
 Al igual que `Request`, este objeto hereda los métodos de `Body`. Si bien este objeto nosotros no lo crearemos sino que lo recibiremos, es interesante que conozcamos qué contiene.
 
-#### Propiedades
+####Propiedades
 
 - `headers`: Un objeto Headers con las cabeceras de la respuesta.
 - `ok`: Un boleano que indica si la petición ha sido satisfactoria.

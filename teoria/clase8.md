@@ -618,6 +618,6 @@ function traeDatos(idUsuario) {
 
 - [asyncjs](https://caolan.github.io/async/v3/docs.html)
 
-### Enlaces de interés
+### Enlaces de interés
 
 - [✨♻️ JavaScript Visualized: Event Loop](https://dev.to/lydiahallie/javascript-visualized-event-loop-3dif)

@@ -208,7 +208,7 @@ document.body.insertBefore(p, document.body.firstChild)
 
 Esta API permite al usuario arrastrar elementos HTML por la pantalla de su dispositivo usando su ratón y soltarlos en otro elemento. Su uso implica la combinación de DOM y gestión de eventos de navegador.
 
-#### Uso
+#### Uso
 
 Lo primero que tendremos que hacer es marcar el elemento que queremos arrastrar como `draggable`.
 

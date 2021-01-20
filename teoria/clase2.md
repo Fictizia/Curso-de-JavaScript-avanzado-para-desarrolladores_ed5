@@ -283,7 +283,7 @@ const division = 9 / 3; // 3
 // operador potencia
 const potencia = 3 ** 2; // 9
 
-// operador modulo
+// operador modulo u operador resto
 const modulo = 8 % 3; // 2
 
 ```
@@ -367,7 +367,16 @@ const menorOIgualQue = 100 <= 100;
 const igualOCasi = 100 == "100";
 const igualYDelMismoTipo = 100 === 100;
 const noIgual = 100 !== "100";
+
+// Más ejemplos de esto:
+1 == '1' // verdadero
+1 === '1' // falso
+false == 0 // verdadero
+false === 0 // falso
+'' == 0 // verdadero
+'' === 0 // falso
 ```
+
 
 #### Control de flujo
 
@@ -532,14 +541,13 @@ for (const clave in objeto){
   };
 */
 
-// las expresiones en for no tienen porqué ser individuales
 const iterable = [ 1, 5, 10]
 for (const valor of iterable){
   console.log(valor)
 }
 ```
 
-### Enlaces de interés
+###Enlaces de interés
 
 - [Lenguajes dinámicos y lenguajes estáticos](https://charlascylon.com/2017-05-10-dynamic-vs-static)
 - [wtfjs](https://github.com/denysdovhan/wtfjs)
@@ -603,8 +611,6 @@ function calculadora(num1, num2, operador) {
       console.log("La has liao parda");
   }
 }
-
-
 ```
 
 4. Crear una función que reciba un `divisor` y un `limite` y devuelva el mayor número divisible por `divisor` menor que `limite`. Ambos valores serán siempre enteros positivos.
@@ -625,7 +631,7 @@ function maximoDivisible (divisor, limite) {
 }
 ```
 
-5. Cada día una planta crece en metros en base a su `velocidadCrecimiento`. Cada noche, dicha planta decrece en metros en base a su `velocidadDecrecimiento` debido a la falta de sol. Cuando nace, mide exactamente 0 metros. Queremos saber los días que tardará una planta en alcanzar cierta `alturaDeseada`. Crear una función que reciba `velocidadCrecimiento`, `velocidadDecrecimiento` y `alturaDeseada` como números enteros positivos y devuelva el número de días que tardará la planta en medir la `alturaDeseada`.
+5. Cada día una planta crece en metros según su `velocidadCrecimiento`. Cada noche, dicha planta decrece en metros en base a su `velocidadDecrecimiento` debido a la falta de sol. Cuando nace, mide exactamente 0 metros. Queremos saber los días que tardará una planta en alcanzar cierta `alturaDeseada`. Crear una función que reciba `velocidadCrecimiento`, `velocidadDecrecimiento` y `alturaDeseada` como números enteros positivos y devuelva el número de días que tardará la planta en medir la `alturaDeseada`.
 
 ```javascript
 function calcularDiasCrecimiento(velocidadCrecimiento, velocidadDecrecimiento, alturaDeseada) {

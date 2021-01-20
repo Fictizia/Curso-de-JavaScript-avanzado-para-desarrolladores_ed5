@@ -431,6 +431,6 @@ Otra forma de hacerlo, sería usando `for...of`. La principal diferencia es que 
 })()
 ```
 
-### Enlaces de interés
+### Enlaces de interés
 
 - [⭐️🎀 JavaScript Visualized: Promises & Async/Await](https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke)
